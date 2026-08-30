@@ -5,8 +5,14 @@
 
 set -euo pipefail
 
-DEPLOY_PATH="/var/www/webpills"
-DOMAIN="ec2-13-62-220-28.eu-north-1.compute.amazonaws.com"
+DEPLOY_PATH="${DEPLOY_PATH:-/var/www/webpills}"
+DOMAIN="${DOMAIN:-ec2-13-62-220-28.eu-north-1.compute.amazonaws.com}"
+
+if ! sudo -n true 2>/dev/null; then
+	echo "Este script necesita sudo sin contraseña (usuario ubuntu en EC2)."
+	echo "Conéctate al VPS y ejecuta: sudo bash $0"
+	exit 1
+fi
 
 sudo mkdir -p "$DEPLOY_PATH"
 sudo chown -R ubuntu:ubuntu "$DEPLOY_PATH"
