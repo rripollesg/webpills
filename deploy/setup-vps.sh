@@ -6,7 +6,10 @@
 set -euo pipefail
 
 DEPLOY_PATH="${DEPLOY_PATH:-/var/www/webpills}"
-DOMAIN="${DOMAIN:-ec2-13-62-220-28.eu-north-1.compute.amazonaws.com}"
+DOMAIN="${DOMAIN:-serefor.com}"
+DOMAIN_WWW="${DOMAIN_WWW:-www.serefor.com}"
+EC2_DNS="${EC2_DNS:-ec2-13-62-220-28.eu-north-1.compute.amazonaws.com}"
+VPS_IP="${VPS_IP:-13.62.220.28}"
 
 if ! sudo -n true 2>/dev/null; then
 	echo "Este script necesita sudo sin contraseña (usuario ubuntu en EC2)."
@@ -26,7 +29,7 @@ sudo tee /etc/nginx/sites-available/webpills >/dev/null <<NGINX
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
-    server_name ${DOMAIN} _;
+    server_name ${DOMAIN} ${DOMAIN_WWW} ${EC2_DNS} ${VPS_IP};
 
     root ${DEPLOY_PATH};
     index index.html;
@@ -54,4 +57,4 @@ sudo nginx -t
 sudo systemctl enable nginx
 sudo systemctl reload nginx
 
-echo "Listo: ${DEPLOY_PATH} servido en http://${DOMAIN}"
+echo "Listo: ${DEPLOY_PATH} en http://${DOMAIN} y http://${DOMAIN_WWW}"

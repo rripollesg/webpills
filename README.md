@@ -62,10 +62,26 @@ Servidor AWS (eu-north-1):
 
 | Campo | Valor |
 |-------|-------|
+| Dominio | **https://serefor.com** |
 | IP | `13.62.220.28` |
-| DNS | `ec2-13-62-220-28.eu-north-1.compute.amazonaws.com` |
+| DNS EC2 | `ec2-13-62-220-28.eu-north-1.compute.amazonaws.com` |
 | Usuario SSH | `ubuntu` |
 | Ruta web | `/var/www/webpills` |
+
+### DNS (en tu registrador de serefor.com)
+
+| Tipo | Nombre | Valor |
+|------|--------|-------|
+| A | `@` | `13.62.220.28` |
+| A | `www` | `13.62.220.28` |
+
+La web se sirve en la **raíz** del dominio: `https://serefor.com/` (no `/webpills`).
+
+Tras propagar DNS (minutos u horas), en el VPS:
+
+```bash
+sudo CERTBOT_EMAIL=tu@email.com bash deploy/enable-ssl.sh
+```
 
 Workflows en `.github/workflows/`:
 
