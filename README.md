@@ -58,6 +58,15 @@ Basada en la política de privacidad de la app Pills.
 
 ## Despliegue en VPS (GitHub Actions)
 
+Servidor AWS (eu-north-1):
+
+| Campo | Valor |
+|-------|-------|
+| IP | `13.62.220.28` |
+| DNS | `ec2-13-62-220-28.eu-north-1.compute.amazonaws.com` |
+| Usuario SSH | `ubuntu` |
+| Ruta web | `/var/www/webpills` |
+
 Workflows en `.github/workflows/`:
 
 | Workflow | Cuándo se ejecuta |
@@ -65,22 +74,40 @@ Workflows en `.github/workflows/`:
 | `ci.yml` | Push y PR a `main` / `v1` — compila el sitio |
 | `deploy-vps.yml` | Push a `main` / `v1` o manual — build + rsync al VPS |
 
-### Secrets del repositorio
+### Variables del repositorio (ya configuradas)
 
-Configúralos en **Settings → Secrets and variables → Actions** (entorno `production` para deploy):
+| Variable | Valor |
+|----------|-------|
+| `VPS_HOST` | `13.62.220.28` |
+| `VPS_USER` | `ubuntu` |
+| `VPS_DEPLOY_PATH` | `/var/www/webpills` |
 
-| Secret | Ejemplo | Descripción |
-|--------|---------|-------------|
-| `VPS_HOST` | `203.0.113.10` | IP o dominio del VPS |
-| `VPS_USER` | `deploy` | Usuario SSH |
-| `VPS_SSH_KEY` | clave privada PEM | Clave sin passphrase recomendada |
-| `VPS_DEPLOY_PATH` | `/var/www/webpills` | Carpeta destino del sitio estático |
+### Secret pendiente (solo tú)
 
-### Preparar el VPS
+| Secret | Descripción |
+|--------|-------------|
+| `VPS_SSH_KEY` | Clave privada SSH para el deploy |
+
+Generar clave y configurar:
 
 ```bash
-sudo mkdir -p /var/www/webpills
-sudo chown -R deploy:deploy /var/www/webpills
+bash deploy/generate-deploy-key.sh
+# Sigue las instrucciones que imprime (añadir clave al VPS + secret en GitHub)
 ```
 
-Ejemplo de nginx: `deploy/nginx.webpills.conf.example`.
+O manualmente:
+
+```bash
+gh secret set VPS_SSH_KEY -R rripollesg/webpills < ruta/a/clave_privada
+```
+
+### Preparar el VPS (una vez)
+
+Conecta con tu clave habitual:
+
+```bash
+ssh ubuntu@13.62.220.28
+bash deploy/setup-vps.sh
+```
+
+Instala nginx, crea `/var/www/webpills` y deja el sitio accesible en el DNS de EC2.

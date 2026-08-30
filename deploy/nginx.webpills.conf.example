@@ -4,7 +4,7 @@
 server {
     listen 80;
     listen [::]:80;
-    server_name pills.example.com;
+    server_name pills.example.com ec2-13-62-220-28.eu-north-1.compute.amazonaws.com;
 
     root /var/www/webpills;
     index index.html;
