@@ -62,20 +62,20 @@ Servidor AWS (eu-north-1):
 
 | Campo | Valor |
 |-------|-------|
-| Dominio | **https://serefor.com** |
+| Dominio | **https://pills.serefor.com** |
 | IP | `13.62.220.28` |
 | DNS EC2 | `ec2-13-62-220-28.eu-north-1.compute.amazonaws.com` |
 | Usuario SSH | `ubuntu` |
-| Ruta web | `/var/www/webpills` |
+| Ruta web | `/var/www/serefor_com_usr/data/www/pills.serefor.com` |
 
-### DNS (en tu registrador de serefor.com)
+### DNS (registrador de serefor.com)
 
 | Tipo | Nombre | Valor |
 |------|--------|-------|
-| A | `@` | `13.62.220.28` |
-| A | `www` | `13.62.220.28` |
+| A | `pills` | `13.62.220.28` |
+| A | `www.pills` | `13.62.220.28` |
 
-La web se sirve en la **raíz** del dominio: `https://serefor.com/` (no `/webpills`).
+La web se sirve en: **https://pills.serefor.com/**
 
 Tras propagar DNS (minutos u horas), en el VPS:
 
@@ -96,7 +96,7 @@ Workflows en `.github/workflows/`:
 |----------|-------|
 | `VPS_HOST` | `13.62.220.28` |
 | `VPS_USER` | `ubuntu` |
-| `VPS_DEPLOY_PATH` | `/var/www/webpills` |
+| `VPS_DEPLOY_PATH` | `/var/www/serefor_com_usr/data/www/pills.serefor.com` |
 
 ### Secret pendiente (solo tú)
 
@@ -126,4 +126,4 @@ ssh ubuntu@13.62.220.28
 bash deploy/setup-vps.sh
 ```
 
-Instala nginx, crea `/var/www/webpills` y deja el sitio accesible en el DNS de EC2.
+Instala nginx, crea la carpeta de despliegue y deja el sitio accesible en `pills.serefor.com`.

@@ -4,8 +4,8 @@
 
 set -euo pipefail
 
-DOMAIN="${DOMAIN:-serefor.com}"
-DOMAIN_WWW="${DOMAIN_WWW:-www.serefor.com}"
+DOMAIN="${DOMAIN:-pills.serefor.com}"
+DOMAIN_WWW="${DOMAIN_WWW:-www.pills.serefor.com}"
 EMAIL="${CERTBOT_EMAIL:-}"
 
 if ! sudo -n true 2>/dev/null; then
