@@ -55,3 +55,32 @@ Enlaces de App Store y Google Play: `src/config/downloads.ts`.
 - Otros idiomas → `/en/privacy`, `/fr/privacy`, …
 
 Basada en la política de privacidad de la app Pills.
+
+## Despliegue en VPS (GitHub Actions)
+
+Workflows en `.github/workflows/`:
+
+| Workflow | Cuándo se ejecuta |
+|----------|-------------------|
+| `ci.yml` | Push y PR a `main` / `v1` — compila el sitio |
+| `deploy-vps.yml` | Push a `main` / `v1` o manual — build + rsync al VPS |
+
+### Secrets del repositorio
+
+Configúralos en **Settings → Secrets and variables → Actions** (entorno `production` para deploy):
+
+| Secret | Ejemplo | Descripción |
+|--------|---------|-------------|
+| `VPS_HOST` | `203.0.113.10` | IP o dominio del VPS |
+| `VPS_USER` | `deploy` | Usuario SSH |
+| `VPS_SSH_KEY` | clave privada PEM | Clave sin passphrase recomendada |
+| `VPS_DEPLOY_PATH` | `/var/www/webpills` | Carpeta destino del sitio estático |
+
+### Preparar el VPS
+
+```bash
+sudo mkdir -p /var/www/webpills
+sudo chown -R deploy:deploy /var/www/webpills
+```
+
+Ejemplo de nginx: `deploy/nginx.webpills.conf.example`.
