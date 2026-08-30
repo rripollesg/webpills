@@ -1,0 +1,26 @@
+# Copia a /etc/nginx/sites-available/webpills y enlaza en sites-enabled.
+# Ajusta server_name y root (debe coincidir con VPS_DEPLOY_PATH).
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name pills.example.com;
+
+    root /var/www/webpills;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ $uri.html /index.html;
+    }
+
+    location ~* \.(?:css|js|webp|png|jpg|jpeg|gif|ico|svg|woff2?)$ {
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        try_files $uri =404;
+    }
+
+    location ~* \.apk$ {
+        add_header Content-Disposition "attachment";
+        try_files $uri =404;
+    }
+}
