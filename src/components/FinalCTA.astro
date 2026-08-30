@@ -1,0 +1,57 @@
+---
+import type { UI } from '../i18n';
+import StoreBadges from './StoreBadges.astro';
+
+interface Props {
+	t: UI;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="descargar" class="cta">
+	<div class="container">
+		<div class="panel reveal">
+			<h2>{t.cta.title}</h2>
+			<p>{t.cta.description}</p>
+			<StoreBadges t={t} />
+			<p class="disclaimer">{t.cta.disclaimer}</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.cta {
+		background: var(--bg);
+		padding-top: 40px;
+	}
+
+	.panel {
+		text-align: center;
+		border-radius: 32px;
+		padding: 64px 28px;
+		background:
+			radial-gradient(500px 220px at 80% 0%, rgba(125, 255, 240, 0.12), transparent),
+			linear-gradient(160deg, #12313d, #0b1f28);
+		border: 1px solid var(--border-strong);
+		box-shadow: var(--shadow);
+	}
+
+	h2 {
+		font-size: clamp(28px, 3.6vw, 40px);
+		max-width: 16ch;
+		margin: 0 auto 14px;
+	}
+
+	.panel > p:first-of-type {
+		color: var(--ink-muted);
+		max-width: 520px;
+		margin: 0 auto 28px;
+		font-size: 17px;
+	}
+
+	.disclaimer {
+		margin: 28px auto 0;
+		max-width: 520px;
+	}
+</style>

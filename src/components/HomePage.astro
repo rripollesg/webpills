@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Features from '../components/Features.astro';
+import Showcases from '../components/Showcases.astro';
+import Screenshots from '../components/Screenshots.astro';
+import VoiceSection from '../components/VoiceSection.astro';
+import Platforms from '../components/Platforms.astro';
+import PrivacySection from '../components/PrivacySection.astro';
+import PremiumSection from '../components/PremiumSection.astro';
+import FAQ from '../components/FAQ.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import DownloadToast from '../components/DownloadToast.astro';
+import Footer from '../components/Footer.astro';
+import { type Lang, useTranslations } from '../i18n';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<Layout title={t.meta.title} description={t.meta.description} lang={lang}>
+	<Header lang={lang} t={t} />
+	<main>
+		<Hero t={t} />
+		<TrustBar t={t} />
+		<Features t={t} />
+		<Showcases t={t} />
+		<Screenshots t={t} />
+		<VoiceSection t={t} />
+		<Platforms t={t} />
+		<PrivacySection t={t} />
+		<PremiumSection t={t} />
+		<FAQ t={t} />
+		<FinalCTA t={t} />
+	</main>
+	<Footer lang={lang} t={t} />
+	<DownloadToast t={t} />
+</Layout>

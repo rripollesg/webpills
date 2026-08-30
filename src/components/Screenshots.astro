@@ -1,0 +1,164 @@
+---
+import type { UI } from '../i18n';
+import { screenshotFiles } from '../i18n/types';
+
+interface Props {
+	t: UI;
+}
+
+const { t } = Astro.props;
+
+const galleryOrder = [
+	'historial',
+	'parte-medica',
+	'parte-historial',
+	'calendario',
+	'dolor',
+	'constantes',
+	'ciclo',
+	'perfil',
+] as const;
+
+const gallery = galleryOrder
+	.map((id) => t.screenshots.gallery.find((item) => item.id === id))
+	.filter((item): item is NonNullable<typeof item> => Boolean(item));
+---
+
+<section id="capturas" class="shots light-section">
+	<div class="container">
+		<div class="section-head reveal">
+			<span class="eyebrow light">{t.screenshots.eyebrow}</span>
+			<h2>{t.screenshots.title}</h2>
+			<p>{t.screenshots.description}</p>
+		</div>
+
+		<div class="gallery reveal">
+			{
+				gallery.map((item) => (
+					<figure class="shot">
+						<div class="phone">
+							<div class="phone-frame">
+								<img
+									src={screenshotFiles[item.id]}
+									alt={item.title}
+									loading="lazy"
+									width="360"
+									height="800"
+									decoding="async"
+								/>
+							</div>
+						</div>
+						<figcaption>
+							<h3>{item.title}</h3>
+							<p>{item.caption}</p>
+						</figcaption>
+					</figure>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.light-section {
+		background: linear-gradient(180deg, var(--light), #ebe8df);
+		color: var(--light-ink);
+		padding: 72px 0;
+	}
+
+	.light-section h2,
+	.light-section h3 {
+		color: var(--light-ink);
+	}
+
+	.eyebrow.light {
+		background: rgba(26, 168, 155, 0.1);
+		border-color: rgba(26, 168, 155, 0.25);
+		color: #0f766e;
+	}
+
+	.section-head p {
+		color: #5b6f78;
+	}
+
+	.gallery {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 32px 24px;
+	}
+
+	.shot {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 14px;
+		min-width: 0;
+	}
+
+	.phone {
+		width: 100%;
+		max-width: 210px;
+	}
+
+	.phone-frame {
+		border-radius: 28px;
+		padding: 8px;
+		background: linear-gradient(165deg, #1a3340, #0a1921);
+		border: 2px solid rgba(125, 255, 240, 0.14);
+		box-shadow: 0 18px 40px rgba(10, 30, 40, 0.16);
+		overflow: hidden;
+		line-height: 0;
+	}
+
+	.phone-frame img {
+		width: 100%;
+		height: auto;
+		display: block;
+		border-radius: 20px;
+	}
+
+	figcaption {
+		width: 100%;
+		max-width: 220px;
+		text-align: center;
+	}
+
+	figcaption h3 {
+		font-size: 15px;
+		margin-bottom: 4px;
+	}
+
+	figcaption p {
+		font-size: 13px;
+		color: #5b6f78;
+		line-height: 1.5;
+	}
+
+	@media (max-width: 1080px) {
+		.gallery {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 760px) {
+		.gallery {
+			display: flex;
+			gap: 16px;
+			overflow-x: auto;
+			padding-bottom: 8px;
+			scroll-snap-type: x mandatory;
+			-webkit-overflow-scrolling: touch;
+			scrollbar-width: thin;
+		}
+
+		.shot {
+			flex: 0 0 min(72vw, 220px);
+			scroll-snap-align: start;
+		}
+
+		.phone {
+			max-width: 200px;
+		}
+	}
+</style>

@@ -1,0 +1,307 @@
+---
+import type { Lang, UI } from '../i18n';
+import { languages, langCodes, localePath } from '../i18n';
+
+interface Props {
+	lang: Lang;
+	t: UI;
+	/** Keep language switcher on this path (e.g. "privacy") */
+	path?: string;
+	/** Prefix section anchors with home URL when not on the landing page */
+	sectionBase?: string;
+}
+
+const { lang, t, path = '', sectionBase } = Astro.props;
+const home = localePath(lang);
+const base = sectionBase ?? (path ? home : '');
+
+const navLinks = [
+	{ href: `${base}#funciones`, label: t.nav.features },
+	{ href: `${base}#capturas`, label: t.nav.screenshots },
+	{ href: `${base}#plataformas`, label: t.nav.platforms },
+	{ href: `${base}#privacidad`, label: t.nav.privacy },
+	{ href: `${base}#premium`, label: t.nav.premium },
+	{ href: `${base}#preguntas`, label: t.nav.faq },
+];
+---
+
+<header id="site-header">
+	<div class="container">
+		<div class="nav-pill">
+			<a href={home} class="logo">
+				<span class="logo-mark" aria-hidden="true">
+					<img src="/icon.png" alt="" width="34" height="34" />
+				</span>
+				Pills
+			</a>
+
+			<nav class="nav-links" aria-label="Primary">
+				{navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+			</nav>
+
+			<div class="nav-actions">
+				<details class="lang-switch">
+					<summary aria-label={t.nav.language}>{lang.toUpperCase()}</summary>
+					<div class="lang-menu">
+						{
+							langCodes.map((code) => (
+								<a
+									href={localePath(code, path)}
+									hreflang={code}
+									aria-current={code === lang ? 'page' : undefined}
+								>
+									{languages[code]}
+								</a>
+							))
+						}
+					</div>
+				</details>
+				<a href="#descargar" class="btn btn-dark download">{t.nav.download}</a>
+				<button id="menu-toggle" type="button" aria-label={t.nav.openMenu} aria-expanded="false">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<nav id="mobile-nav" hidden>
+		{navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+		<div class="mobile-langs">
+			{
+				langCodes.map((code) => (
+					<a href={localePath(code, path)} hreflang={code} class:list={[{ active: code === lang }]}>
+						{code.toUpperCase()}
+					</a>
+				))
+			}
+		</div>
+		<a href="#descargar" class="btn btn-primary">{t.nav.download}</a>
+	</nav>
+</header>
+
+<style>
+	header {
+		position: fixed;
+		inset: 0 0 auto;
+		z-index: 50;
+		padding-top: 18px;
+	}
+
+	.nav-pill {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		min-height: 64px;
+		padding: 8px 10px 8px 16px;
+		border-radius: var(--radius-pill);
+		background: color-mix(in srgb, var(--nav-pill) 92%, white);
+		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
+	}
+
+	.logo {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		font-weight: 800;
+		font-size: 17px;
+		color: var(--nav-ink);
+	}
+
+	.logo-mark {
+		width: 34px;
+		height: 34px;
+		border-radius: 50%;
+		overflow: hidden;
+		display: grid;
+		place-items: center;
+		background: #fff;
+		flex-shrink: 0;
+	}
+
+	.logo-mark img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.nav-links {
+		display: flex;
+		align-items: center;
+		gap: 28px;
+	}
+
+	.nav-links a {
+		font-size: 14px;
+		font-weight: 650;
+		color: #2a4450;
+		transition: color 0.2s ease;
+	}
+
+	.nav-links a:hover {
+		color: #0d1f28;
+	}
+
+	.nav-actions {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.download {
+		padding: 11px 18px;
+		font-size: 14px;
+	}
+
+	.lang-switch {
+		position: relative;
+	}
+
+	.lang-switch summary {
+		list-style: none;
+		cursor: pointer;
+		padding: 8px 12px;
+		border-radius: var(--radius-pill);
+		font-size: 12px;
+		font-weight: 700;
+		color: #2a4450;
+		border: 1px solid rgba(13, 31, 40, 0.12);
+		background: rgba(255, 255, 255, 0.45);
+	}
+
+	.lang-switch summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.lang-menu {
+		position: absolute;
+		right: 0;
+		top: calc(100% + 8px);
+		z-index: 60;
+		min-width: 180px;
+		padding: 8px;
+		border-radius: 14px;
+		background: #0f2430;
+		border: 1px solid var(--border);
+		box-shadow: var(--shadow);
+		display: grid;
+		gap: 2px;
+	}
+
+	.lang-menu a {
+		padding: 8px 10px;
+		border-radius: 10px;
+		font-size: 13px;
+		color: var(--ink-muted);
+	}
+
+	.lang-menu a:hover,
+	.lang-menu a[aria-current='page'] {
+		background: var(--mint-dim);
+		color: var(--mint);
+	}
+
+	#menu-toggle {
+		display: none;
+		width: 42px;
+		height: 42px;
+		border: none;
+		border-radius: 50%;
+		background: #0d1f28;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 5px;
+		cursor: pointer;
+	}
+
+	#menu-toggle span {
+		width: 16px;
+		height: 2px;
+		background: #fff;
+		border-radius: 2px;
+	}
+
+	#mobile-nav {
+		margin: 10px 24px 0;
+		padding: 16px;
+		border-radius: 22px;
+		background: rgba(15, 36, 48, 0.96);
+		border: 1px solid var(--border);
+		backdrop-filter: blur(16px);
+		display: none;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	#mobile-nav.open {
+		display: flex;
+	}
+
+	#mobile-nav a {
+		padding: 12px 10px;
+		border-radius: 12px;
+		color: var(--ink);
+		font-weight: 600;
+	}
+
+	#mobile-nav a:hover {
+		background: var(--mint-dim);
+	}
+
+	.mobile-langs {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		padding: 10px 0 14px;
+	}
+
+	.mobile-langs a {
+		padding: 6px 10px !important;
+		border: 1px solid var(--border);
+		font-size: 12px;
+		color: var(--ink-muted) !important;
+	}
+
+	.mobile-langs a.active {
+		border-color: var(--mint);
+		color: var(--mint) !important;
+	}
+
+	@media (max-width: 920px) {
+		.nav-links,
+		.lang-switch,
+		.download {
+			display: none;
+		}
+
+		#menu-toggle {
+			display: flex;
+		}
+
+		.nav-pill {
+			padding-right: 8px;
+		}
+	}
+</style>
+
+<script>
+	const toggle = document.getElementById('menu-toggle');
+	const mobileNav = document.getElementById('mobile-nav');
+
+	toggle?.addEventListener('click', () => {
+		const open = mobileNav?.classList.toggle('open');
+		toggle.setAttribute('aria-expanded', String(!!open));
+		if (mobileNav) mobileNav.hidden = !open;
+	});
+
+	mobileNav?.querySelectorAll('a').forEach((link) => {
+		link.addEventListener('click', () => {
+			mobileNav.classList.remove('open');
+			mobileNav.hidden = true;
+			toggle?.setAttribute('aria-expanded', 'false');
+		});
+	});
+</script>

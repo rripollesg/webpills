@@ -1,0 +1,120 @@
+---
+import type { UI } from '../i18n';
+
+interface Props {
+	t: UI;
+}
+
+const { t } = Astro.props;
+const loop = [...t.stats.ticker, ...t.stats.ticker];
+---
+
+<section class="stats-wrap">
+	<div class="container stats-grid">
+		{
+			t.stats.items.map((item) => (
+				<div class="stat reveal">
+					<strong>{item.value}</strong>
+					<span>{item.label}</span>
+				</div>
+			))
+		}
+	</div>
+
+	<div class="ticker-shell">
+		<div class="ticker" aria-hidden="true">
+			{
+				loop.map((item) => (
+					<span>
+						<i></i>
+						{item}
+					</span>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.stats-wrap {
+		padding: 28px 0 0;
+		background: linear-gradient(180deg, transparent, rgba(243, 241, 234, 0.02) 40%, var(--light) 78%);
+	}
+
+	.stats-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 20px;
+		padding-bottom: 56px;
+		text-align: center;
+	}
+
+	.stat {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.stat strong {
+		font-size: clamp(28px, 4vw, 42px);
+		font-weight: 800;
+		color: var(--mint);
+		letter-spacing: -0.04em;
+	}
+
+	.stat span {
+		font-size: 14px;
+		color: var(--ink-muted);
+	}
+
+	.ticker-shell {
+		overflow: hidden;
+		border-top: 1px solid rgba(26, 46, 56, 0.08);
+		border-bottom: 1px solid rgba(26, 46, 56, 0.08);
+		background: var(--light);
+		padding: 18px 0;
+	}
+
+	.ticker {
+		display: flex;
+		gap: 36px;
+		width: max-content;
+		animation: marquee 38s linear infinite;
+		font-family: var(--font-mono);
+		font-size: 12px;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: #3d5560;
+		font-weight: 500;
+	}
+
+	.ticker span {
+		display: inline-flex;
+		align-items: center;
+		gap: 36px;
+		white-space: nowrap;
+	}
+
+	.ticker i {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: #1aa89b;
+		display: inline-block;
+	}
+
+	@keyframes marquee {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
+	@media (max-width: 800px) {
+		.stats-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

@@ -1,0 +1,145 @@
+---
+import type { UI } from '../i18n';
+
+interface Props {
+	t: UI;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="privacidad" class="privacy">
+	<div class="container grid">
+		<div class="copy reveal">
+			<span class="eyebrow">{t.privacy.eyebrow}</span>
+			<h2>{t.privacy.title}</h2>
+			<p>{t.privacy.description}</p>
+			<ul>
+				{
+					t.privacy.points.map((point) => (
+						<li>
+							<span aria-hidden="true">✓</span>
+							{point}
+						</li>
+					))
+				}
+			</ul>
+		</div>
+
+		<div class="panel reveal" aria-hidden="true">
+			<div class="lock">
+				<svg width="36" height="36" viewBox="0 0 24 24" fill="none">
+					<rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.8"
+					></rect>
+					<path
+						d="M8 11V8.2a4 4 0 0 1 8 0V11"
+						stroke="currentColor"
+						stroke-width="1.8"
+						stroke-linecap="round"></path>
+				</svg>
+			</div>
+			<strong>SQLCipher · AES-256</strong>
+			<span>Keychain / Keystore</span>
+			<span>HKDF-SHA256</span>
+			<span>.pillsbak</span>
+		</div>
+	</div>
+</section>
+
+<style>
+	.privacy {
+		background: radial-gradient(700px 360px at 85% 0%, rgba(125, 255, 240, 0.08), transparent),
+			var(--bg);
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: 1.2fr 0.8fr;
+		gap: 48px;
+		align-items: center;
+	}
+
+	.copy h2 {
+		margin: 18px 0 14px;
+		font-size: clamp(28px, 3.4vw, 38px);
+		max-width: 14ch;
+	}
+
+	.copy > p {
+		color: var(--ink-muted);
+		font-size: 16px;
+		max-width: 52ch;
+		margin-bottom: 28px;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: grid;
+		gap: 14px;
+	}
+
+	li {
+		display: flex;
+		gap: 12px;
+		align-items: flex-start;
+		color: #d5e4ea;
+		font-size: 15px;
+	}
+
+	li span {
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		display: grid;
+		place-items: center;
+		flex-shrink: 0;
+		background: var(--mint-dim);
+		color: var(--mint);
+		font-size: 12px;
+		font-weight: 700;
+	}
+
+	.panel {
+		border-radius: 28px;
+		padding: 36px 28px;
+		background: linear-gradient(160deg, #12303c, #0c222c);
+		border: 1px solid var(--border-strong);
+		box-shadow: var(--shadow);
+		display: grid;
+		gap: 12px;
+		justify-items: start;
+	}
+
+	.lock {
+		width: 64px;
+		height: 64px;
+		border-radius: 18px;
+		display: grid;
+		place-items: center;
+		background: var(--mint-dim);
+		color: var(--mint);
+		margin-bottom: 8px;
+	}
+
+	.panel strong {
+		font-size: 20px;
+		color: var(--mint);
+	}
+
+	.panel span {
+		font-size: 14px;
+		color: var(--ink-muted);
+		padding: 8px 12px;
+		border-radius: var(--radius-pill);
+		border: 1px solid var(--border);
+		background: rgba(255, 255, 255, 0.03);
+	}
+
+	@media (max-width: 860px) {
+		.grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

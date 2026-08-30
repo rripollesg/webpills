@@ -1,0 +1,151 @@
+---
+import type { Lang, UI } from '../i18n';
+import { localePath } from '../i18n';
+
+interface Props {
+	lang: Lang;
+	t: UI;
+	path?: string;
+	sectionBase?: string;
+}
+
+const { lang, t, sectionBase } = Astro.props;
+const home = localePath(lang);
+const base = sectionBase ?? '';
+const year = new Date().getFullYear();
+const privacyHref = localePath(lang, 'privacy');
+---
+
+<footer>
+	<div class="container top">
+		<div class="brand">
+			<a href={home} class="logo">
+				<span class="mark" aria-hidden="true">
+					<img src="/icon.png" alt="" width="30" height="30" />
+				</span>
+				Pills
+			</a>
+			<p>{t.footer.tagline}</p>
+		</div>
+
+		<div>
+			<h4>{t.footer.product}</h4>
+			<a href={`${base}#funciones`}>{t.nav.features}</a>
+			<a href={`${base}#capturas`}>{t.nav.screenshots}</a>
+			<a href={`${base}#plataformas`}>{t.nav.platforms}</a>
+			<a href={`${base}#privacidad`}>{t.nav.privacy}</a>
+			<a href={`${base}#premium`}>{t.nav.premium}</a>
+			<a href={`${base}#preguntas`}>{t.nav.faq}</a>
+		</div>
+
+		<div>
+			<h4>{t.footer.legal}</h4>
+			<a href={privacyHref}>{t.footer.privacyPolicy}</a>
+			<a href={home}>{t.footer.legalNotice}</a>
+			<a href={`${base}#preguntas`}>{t.footer.contact}</a>
+		</div>
+	</div>
+
+	<div class="container bottom">
+		<p>© {year} Pills. {t.footer.rights}</p>
+		<p class="disclaimer">{t.footer.disclaimer}</p>
+	</div>
+</footer>
+
+<style>
+	footer {
+		background: #061117;
+		padding-top: 64px;
+		border-top: 1px solid var(--border);
+	}
+
+	.top {
+		display: grid;
+		grid-template-columns: 1.6fr 1fr 1fr;
+		gap: 36px;
+		padding-bottom: 40px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+	}
+
+	.logo {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		font-weight: 800;
+		margin-bottom: 12px;
+	}
+
+	.mark {
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		overflow: hidden;
+		display: grid;
+		place-items: center;
+		background: #fff;
+		flex-shrink: 0;
+	}
+
+	.mark img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.brand p {
+		max-width: 340px;
+		color: var(--ink-faint);
+		font-size: 14px;
+	}
+
+	h4 {
+		font-size: 13px;
+		margin-bottom: 14px;
+		color: #fff;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.top a:not(.logo) {
+		display: block;
+		color: var(--ink-faint);
+		font-size: 14px;
+		margin-bottom: 10px;
+	}
+
+	.top a:not(.logo):hover {
+		color: var(--mint);
+	}
+
+	.bottom {
+		padding: 24px 0 40px;
+		display: flex;
+		justify-content: space-between;
+		gap: 20px;
+		flex-wrap: wrap;
+	}
+
+	.bottom p {
+		font-size: 13px;
+		color: var(--ink-faint);
+	}
+
+	.bottom .disclaimer {
+		max-width: 480px;
+		text-align: right;
+	}
+
+	@media (max-width: 760px) {
+		.top {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.brand {
+			grid-column: 1 / -1;
+		}
+
+		.bottom .disclaimer {
+			text-align: left;
+		}
+	}
+</style>
