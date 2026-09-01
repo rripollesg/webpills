@@ -151,6 +151,6 @@ export const screenshotFiles: Record<string, string> = {
 	constantes: '/screenshots/pills-constantes.webp',
 	ciclo: '/screenshots/pills-ciclo.webp',
 	'ciclo-registro': '/screenshots/pills-ciclo-registro.webp',
-	'ciclo-informe': '/screenshots/pills-ciclo-informe.webp',
+	'ciclo-informe': '/screenshots/pills-informe-ciclo-menstrual.webp',
 	perfil: '/screenshots/pills-perfil.webp',
 };
