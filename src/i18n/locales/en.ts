@@ -170,9 +170,9 @@ export const en: UI = {
 				caption: 'Questions for your doctor, notes and symptom tracking.',
 			},
 			{
-				id: 'dolor',
-				title: 'Pain diary',
-				caption: 'Body map with marked zones and VAS intensity.',
+				id: 'ciclo-informe',
+				title: 'Cycle report',
+				caption: 'PDF with average length, phase timeline and logged symptoms.',
 			},
 			{
 				id: 'calendario',
@@ -190,9 +190,9 @@ export const en: UI = {
 				caption: 'CGM glucose, sleep from wearables, blood pressure, BMI, temperature, HR and SpO₂.',
 			},
 			{
-				id: 'ciclo',
-				title: 'Menstrual cycle',
-				caption: 'Calendar, phases, predictions and daily flow.',
+				id: 'ciclo-registro',
+				title: 'Cycle log',
+				caption: 'Daily flow, symptoms and vaginal discharge with quick chips.',
 			},
 			{
 				id: 'perfil',

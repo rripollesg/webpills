@@ -148,5 +148,7 @@ export const screenshotFiles: Record<string, string> = {
 	'parte-historial': '/screenshots/pills-parte-historial.webp',
 	constantes: '/screenshots/pills-constantes.webp',
 	ciclo: '/screenshots/pills-ciclo.webp',
+	'ciclo-registro': '/screenshots/pills-ciclo-registro.webp',
+	'ciclo-informe': '/screenshots/pills-ciclo-informe.webp',
 	perfil: '/screenshots/pills-perfil.webp',
 };

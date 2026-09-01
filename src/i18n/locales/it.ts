@@ -170,9 +170,9 @@ export const it: UI = {
 				caption: 'Domande al medico, note e monitoraggio dei sintomi.',
 			},
 			{
-				id: 'dolor',
-				title: 'Diario del dolore',
-				caption: 'Mappa corporea con zone segnate e intensità EVA.',
+				id: 'ciclo-informe',
+				title: 'Report del ciclo',
+				caption: 'PDF con durata media, timeline delle fasi e sintomi registrati.',
 			},
 			{
 				id: 'calendario',
@@ -190,9 +190,9 @@ export const it: UI = {
 				caption: 'Glucosio CGM, sonno da wearable, pressione, IMC, temperatura, FC e SpO₂.',
 			},
 			{
-				id: 'ciclo',
-				title: 'Ciclo mestruale',
-				caption: 'Calendario, fasi, previsioni e flusso giornaliero.',
+				id: 'ciclo-registro',
+				title: 'Registro del ciclo',
+				caption: 'Flusso giornaliero, sintomi e secrezione con chip rapidi.',
 			},
 			{
 				id: 'perfil',

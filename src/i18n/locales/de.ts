@@ -170,9 +170,9 @@ export const de: UI = {
 				caption: 'Fragen an den Arzt, Notizen und Symptomverfolgung.',
 			},
 			{
-				id: 'dolor',
-				title: 'Schmerztagebuch',
-				caption: 'Körperkarte mit markierten Zonen und VAS-Intensität.',
+				id: 'ciclo-informe',
+				title: 'Zyklusbericht',
+				caption: 'PDF mit durchschnittlicher Dauer, Phasen-Timeline und protokollierten Symptomen.',
 			},
 			{
 				id: 'calendario',
@@ -190,9 +190,9 @@ export const de: UI = {
 				caption: 'CGM-Glukose, Schlaf von Wearables, Blutdruck, BMI, Temperatur, Puls und SpO₂.',
 			},
 			{
-				id: 'ciclo',
-				title: 'Menstruationszyklus',
-				caption: 'Kalender, Phasen, Vorhersagen und täglicher Fluss.',
+				id: 'ciclo-registro',
+				title: 'Zyklusprotokoll',
+				caption: 'Täglicher Fluss, Symptome und Ausfluss mit Schnellauswahl.',
 			},
 			{
 				id: 'perfil',
