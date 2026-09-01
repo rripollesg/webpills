@@ -176,6 +176,7 @@ export const de: UI = {
 				id: 'ciclo-informe',
 				title: 'Menstruationszyklus-Bericht',
 				caption: 'PDF mit durchschnittlicher Dauer, Phasen-Timeline und protokollierten Symptomen.',
+				legalNote: 'Orientierungshilfe; ersetzt keine medizinische Beratung.',
 			},
 			{
 				id: 'calendario',

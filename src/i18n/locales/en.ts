@@ -176,6 +176,7 @@ export const en: UI = {
 				id: 'ciclo-informe',
 				title: 'Menstrual cycle report',
 				caption: 'PDF with average length, phase timeline and logged symptoms.',
+				legalNote: 'Orientation report only; not a substitute for medical advice.',
 			},
 			{
 				id: 'calendario',

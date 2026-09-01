@@ -176,6 +176,7 @@ export const pt: UI = {
 				id: 'ciclo-informe',
 				title: 'Relatório do ciclo menstrual',
 				caption: 'PDF com duração média, timeline de fases e sintomas registrados.',
+				legalNote: 'Relatório orientativo; não substitui orientação médica.',
 			},
 			{
 				id: 'calendario',

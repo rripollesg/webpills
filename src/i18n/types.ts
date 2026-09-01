@@ -69,7 +69,7 @@ export type UI = {
 		eyebrow: string;
 		title: string;
 		description: string;
-		gallery: { id: string; title: string; caption: string }[];
+		gallery: { id: string; title: string; caption: string; legalNote?: string }[];
 	};
 	voice: {
 		eyebrow: string;
@@ -151,6 +151,6 @@ export const screenshotFiles: Record<string, string> = {
 	constantes: '/screenshots/pills-constantes.webp',
 	ciclo: '/screenshots/pills-ciclo.webp',
 	'ciclo-registro': '/screenshots/pills-registro-ciclo-dia.webp',
-	'ciclo-informe': '/screenshots/pills-informe-ciclo-menstrual.webp',
+	'ciclo-informe': '/screenshots/pills-informe-ciclo-v2.webp',
 	perfil: '/screenshots/pills-perfil.webp',
 };

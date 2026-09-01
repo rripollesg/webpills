@@ -1,0 +1,110 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { type Lang, useTranslations, useLegal, localePath } from '../i18n';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const legal = useLegal(lang);
+const home = localePath(lang);
+---
+
+<Layout
+	title={legal.metaTitle}
+	description={legal.metaDescription}
+	keywords={t.meta.keywords}
+	copyright={t.meta.copyright}
+	lang={lang}
+	path="legal"
+>
+	<Header lang={lang} t={t} path="legal" sectionBase={home} />
+	<main class="legal-page">
+		<article class="container doc">
+			<a class="back" href={home}>{legal.backHome}</a>
+			<header class="doc-head">
+				<h1>{legal.title}</h1>
+				<p class="updated">{legal.updated}</p>
+				<p class="intro">{legal.intro}</p>
+			</header>
+
+			{
+				legal.sections.map((section) => (
+					<section id={section.id} class="doc-section">
+						<h2>{section.title}</h2>
+						{section.body.map((paragraph) => (
+							<p>{paragraph}</p>
+						))}
+					</section>
+				))
+			}
+		</article>
+	</main>
+	<Footer lang={lang} t={t} path="legal" sectionBase={home} />
+</Layout>
+
+<style>
+	.legal-page {
+		padding: 140px 0 80px;
+		background:
+			radial-gradient(700px 360px at 80% 0%, rgba(125, 255, 240, 0.06), transparent),
+			var(--bg);
+		min-height: 70vh;
+	}
+
+	.doc {
+		max-width: 760px;
+	}
+
+	.back {
+		display: inline-flex;
+		margin-bottom: 28px;
+		font-size: 14px;
+		font-weight: 650;
+		color: var(--mint);
+	}
+
+	.doc-head {
+		margin-bottom: 40px;
+		padding-bottom: 28px;
+		border-bottom: 1px solid var(--border);
+	}
+
+	h1 {
+		font-size: clamp(32px, 4vw, 44px);
+		margin-bottom: 12px;
+	}
+
+	.updated {
+		font-size: 13px;
+		color: var(--ink-faint);
+		margin-bottom: 16px;
+	}
+
+	.intro {
+		color: var(--ink-muted);
+		font-size: 17px;
+		line-height: 1.6;
+	}
+
+	.doc-section {
+		margin-bottom: 36px;
+	}
+
+	.doc-section h2 {
+		font-size: 22px;
+		margin-bottom: 14px;
+		color: var(--mint-soft);
+	}
+
+	.doc-section p {
+		color: var(--ink-muted);
+		font-size: 15.5px;
+		line-height: 1.65;
+		margin-bottom: 12px;
+	}
+</style>

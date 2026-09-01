@@ -1,12 +1,15 @@
 ---
-import type { UI } from '../i18n';
+import type { UI, Lang } from '../i18n';
+import { localePath } from '../i18n';
 import { screenshotFiles } from '../i18n/types';
 
 interface Props {
 	t: UI;
+	lang: Lang;
 }
 
-const { t } = Astro.props;
+const { t, lang } = Astro.props;
+const legalHref = localePath(lang, 'legal');
 
 const galleryOrder = [
 	'historial',
@@ -35,9 +38,9 @@ const gallery = galleryOrder
 		<div class="gallery reveal">
 			{
 				gallery.map((item) => (
-					<figure class:list={['shot', item.id === 'ciclo-informe' && 'shot--document']}>
+					<figure class:list={['shot', item.id === 'ciclo-informe' && 'shot--featured']}>
 						<div class="phone">
-							<div class:list={['phone-frame', item.id === 'ciclo-informe' && 'phone-frame--document']}>
+							<div class="phone-frame">
 								<img
 									src={screenshotFiles[item.id]}
 									alt={item.title}
@@ -51,6 +54,14 @@ const gallery = galleryOrder
 						<figcaption>
 							<h3>{item.title}</h3>
 							<p>{item.caption}</p>
+							{
+								item.legalNote ? (
+									<p class="legal-note">
+										{item.legalNote}{' '}
+										<a href={legalHref}>{t.footer.legalNotice}</a>
+									</p>
+								) : null
+							}
 						</figcaption>
 					</figure>
 				))
@@ -101,6 +112,10 @@ const gallery = galleryOrder
 		max-width: 210px;
 	}
 
+	.shot--featured .phone {
+		max-width: 228px;
+	}
+
 	.phone-frame {
 		border-radius: 28px;
 		padding: 8px;
@@ -118,24 +133,14 @@ const gallery = galleryOrder
 		border-radius: 20px;
 	}
 
-	.phone-frame--document {
-		background: #ffffff;
-		border-color: rgba(26, 168, 155, 0.22);
-	}
-
-	.phone-frame--document img {
-		object-fit: contain;
-		object-position: top center;
-		background: #ffffff;
-		width: 100%;
-		height: auto;
-		max-width: 100%;
-	}
-
 	figcaption {
 		width: 100%;
 		max-width: 220px;
 		text-align: center;
+	}
+
+	.shot--featured figcaption {
+		max-width: 240px;
 	}
 
 	figcaption h3 {
@@ -147,6 +152,19 @@ const gallery = galleryOrder
 		font-size: 13px;
 		color: #5b6f78;
 		line-height: 1.5;
+	}
+
+	.legal-note {
+		margin-top: 6px;
+		font-size: 11px;
+		color: #7a8b94;
+	}
+
+	.legal-note a {
+		color: #0f766e;
+		font-weight: 600;
+		text-decoration: underline;
+		text-underline-offset: 2px;
 	}
 
 	@media (max-width: 1080px) {
@@ -171,8 +189,16 @@ const gallery = galleryOrder
 			scroll-snap-align: start;
 		}
 
+		.shot--featured {
+			flex-basis: min(78vw, 240px);
+		}
+
 		.phone {
 			max-width: 200px;
+		}
+
+		.shot--featured .phone {
+			max-width: 220px;
 		}
 	}
 </style>
