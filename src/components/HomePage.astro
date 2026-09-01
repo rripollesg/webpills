@@ -24,7 +24,14 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<Layout title={t.meta.title} description={t.meta.description} lang={lang}>
+<Layout
+	title={t.meta.title}
+	description={t.meta.description}
+	keywords={t.meta.keywords}
+	copyright={t.meta.copyright}
+	lang={lang}
+	faqItems={t.faq.items}
+>
 	<Header lang={lang} t={t} />
 	<main>
 		<Hero t={t} />

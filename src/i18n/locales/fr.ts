@@ -5,6 +5,9 @@ export const fr: UI = {
 		title: 'Pills — Votre santé, chiffrée dans votre poche',
 		description:
 			'Rappels de médicaments, historique clinique, journal avec carte corporelle, cycle menstruel et constantes avec sommeil et montre connectée. Glucose CGM et scan dans 6 pays. Données chiffrées sur votre appareil.',
+		keywords:
+			'Pills, médicaments, rappel de pilules, historique clinique, journal de santé, cycle menstruel, constantes vitales, confidentialité, chiffrement, Android, iOS',
+		copyright: '© Serefor · Pills 2025',
 	},
 	nav: {
 		features: 'Fonctions',

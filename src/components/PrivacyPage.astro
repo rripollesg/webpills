@@ -14,7 +14,14 @@ const p = usePrivacy(lang);
 const home = localePath(lang);
 ---
 
-<Layout title={p.metaTitle} description={p.metaDescription} lang={lang} path="privacy">
+<Layout
+	title={p.metaTitle}
+	description={p.metaDescription}
+	keywords={t.meta.keywords}
+	copyright={t.meta.copyright}
+	lang={lang}
+	path="privacy"
+>
 	<Header lang={lang} t={t} path="privacy" sectionBase={home} />
 	<main class="privacy-page">
 		<article class="container doc">

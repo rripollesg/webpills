@@ -5,6 +5,9 @@ export const en: UI = {
 		title: 'Pills — Your health, encrypted in your pocket',
 		description:
 			'Medication reminders, clinical history, body-map diary, menstrual cycle and vitals with sleep and wearables. CGM glucose and 6-country scan. Data stays encrypted on your device.',
+		keywords:
+			'Pills, medication reminder, pill tracker, clinical history, health diary, menstrual cycle, vitals, privacy, encryption, Android, iOS',
+		copyright: '© Serefor · Pills 2025',
 	},
 	nav: {
 		features: 'Features',

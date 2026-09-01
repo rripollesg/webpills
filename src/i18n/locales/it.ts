@@ -5,6 +5,9 @@ export const it: UI = {
 		title: 'Pills — La tua salute, crittografata in tasca',
 		description:
 			'Promemoria farmaci, storico clinico, diario con mappa corporea, ciclo mestruale e costanti con sonno e wearable. Glucosio CGM e scansione in 6 paesi. Dati crittografati sul dispositivo.',
+		keywords:
+			'Pills, farmaci, promemoria pillole, storico clinico, diario salute, ciclo mestruale, costanti vitali, privacy, crittografia, Android, iOS',
+		copyright: '© Serefor · Pills 2025',
 	},
 	nav: {
 		features: 'Funzioni',

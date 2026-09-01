@@ -2,6 +2,8 @@ export type UI = {
 	meta: {
 		title: string;
 		description: string;
+		keywords: string;
+		copyright: string;
 	};
 	nav: {
 		features: string;

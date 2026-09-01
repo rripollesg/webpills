@@ -5,6 +5,9 @@ export const es: UI = {
 		title: 'Pills — Tu salud, cifrada en tu bolsillo',
 		description:
 			'Recordatorio de medicación, historial clínico, diario con mapa corporal, ciclo menstrual y constantes con sueño y pulsera. Glucosa CGM y escaneo en 6 países. Datos cifrados en tu dispositivo.',
+		keywords:
+			'Pills, medicación, recordatorio de pastillas, historial clínico, diario de salud, ciclo menstrual, constantes vitales, privacidad, cifrado, Android, iOS',
+		copyright: '© Serefor · Pills 2025',
 	},
 	nav: {
 		features: 'Funciones',

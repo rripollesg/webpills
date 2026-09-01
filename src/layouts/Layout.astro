@@ -1,18 +1,37 @@
 ---
 import '../styles/global.css';
 import type { Lang } from '../i18n';
-import { languages, localePath } from '../i18n';
+import { langCodes, languages, localePath } from '../i18n';
+import { absoluteUrl, ogLocales, site } from '../config/site';
+import {
+	buildFaqJsonLd,
+	buildOrganizationJsonLd,
+	buildSoftwareAppJsonLd,
+} from '../lib/seo';
 
 interface Props {
 	title: string;
 	description: string;
+	keywords: string;
+	copyright: string;
 	lang: Lang;
 	/** Path without leading slash, e.g. "" or "privacy" */
 	path?: string;
+	faqItems?: { question: string; answer: string }[];
 }
 
-const { title, description, lang, path = '' } = Astro.props;
+const { title, description, keywords, copyright, lang, path = '', faqItems } = Astro.props;
 const htmlLang = lang === 'pt' ? 'pt-BR' : lang;
+const canonical = absoluteUrl(localePath(lang, path));
+const ogImage = absoluteUrl(site.ogImage);
+const ogLocale = ogLocales[lang] ?? 'es_ES';
+const alternateLocales = langCodes.filter((code) => code !== lang);
+
+const jsonLd = [
+	buildOrganizationJsonLd(),
+	buildSoftwareAppJsonLd(description, canonical, ogImage),
+	...(faqItems?.length ? [buildFaqJsonLd(faqItems)] : []),
+];
 ---
 
 <!doctype html>
@@ -24,16 +43,54 @@ const htmlLang = lang === 'pt' ? 'pt-BR' : lang;
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 		<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="canonical" href={canonical} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
+		<meta name="author" content={site.author} />
+		<meta name="copyright" content={copyright} />
+		<meta
+			name="robots"
+			content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"
+		/>
 		<meta name="theme-color" content="#0a1921" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="apple-mobile-web-app-title" content={site.name} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={site.name} />
+		<meta property="og:locale" content={ogLocale} />
+		{
+			alternateLocales.map((code) => (
+				<meta property="og:locale:alternate" content={ogLocales[code] ?? code} />
+			))
+		}
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta property="twitter:domain" content="pills.serefor.com" />
+		<meta property="twitter:url" content={canonical} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:creator" content={site.twitter.creator} />
+		<meta name="twitter:site" content={site.twitter.site} />
 		<title>{title}</title>
 		{
 			(Object.keys(languages) as Lang[]).map((code) => (
-				<link rel="alternate" hreflang={code} href={localePath(code, path)} />
+				<link rel="alternate" hreflang={code} href={absoluteUrl(localePath(code, path))} />
 			))
 		}
-		<link rel="alternate" hreflang="x-default" href={localePath('es', path)} />
+		<link rel="alternate" hreflang="x-default" href={absoluteUrl(localePath('es', path))} />
+		{
+			jsonLd.map((data) => (
+				<script type="application/ld+json" set:html={JSON.stringify(data)} />
+			))
+		}
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
