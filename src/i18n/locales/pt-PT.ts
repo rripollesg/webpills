@@ -5,6 +5,9 @@ export const ptPT: UI = {
 		title: 'Pills — A sua saúde, cifrada no bolso',
 		description:
 			'Lembretes de medicação, histórico clínico, diário com mapa corporal, ciclo menstrual e sinais vitais com sono e pulsera. Glicose CGM e escaneamento em 6 países. Dados cifrados no dispositivo.',
+		keywords:
+			'Pills, medicação, lembrete de comprimidos, histórico clínico, diário de saúde, ciclo menstrual, sinais vitais, privacidade, encriptação, Android, iOS',
+		copyright: '© Serefor · Pills 2025',
 	},
 	nav: {
 		features: 'Funções',

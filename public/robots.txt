@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pills.serefor.com/sitemap-index.xml

@@ -5,6 +5,9 @@ export const de: UI = {
 		title: 'Pills — Ihre Gesundheit, verschlüsselt in der Tasche',
 		description:
 			'Medikamentenerinnerungen, klinische Historie, Tagebuch mit Körperkarte, Menstruationszyklus und Vitalwerte mit Schlaf und Wearables. CGM-Glukose und Scan in 6 Ländern. Daten bleiben verschlüsselt auf dem Gerät.',
+		keywords:
+			'Pills, Medikamente, Pillenerinnerung, klinische Historie, Gesundheitstagebuch, Menstruationszyklus, Vitalwerte, Privatsphäre, Verschlüsselung, Android, iOS',
+		copyright: '© Serefor · Pills 2025',
 	},
 	nav: {
 		features: 'Funktionen',

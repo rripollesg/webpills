@@ -1,0 +1,21 @@
+{
+	"name": "Pills — Tu salud, cifrada en tu bolsillo",
+	"short_name": "Pills",
+	"description": "Recordatorio de medicación, historial clínico y salud con privacidad local.",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#0a1921",
+	"theme_color": "#0a1921",
+	"icons": [
+		{
+			"src": "/favicon-192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/apple-touch-icon.png",
+			"sizes": "180x180",
+			"type": "image/png"
+		}
+	]
+}
