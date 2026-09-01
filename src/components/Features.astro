@@ -23,16 +23,19 @@ const icons: Record<string, string> = {
 	tv: '<rect x="3.5" y="5.5" width="17" height="11.5" rx="2"/><path d="M9 20h6M12 17v3"/>',
 };
 
-const iconTones: Record<string, 'green' | 'purple' | 'coral'> = {
-	calendar: 'green',
+const iconTones: Record<
+	string,
+	'teal' | 'purple' | 'blue' | 'coral' | 'pink' | 'amber' | 'green' | 'indigo' | 'sky'
+> = {
+	calendar: 'teal',
 	scan: 'purple',
-	clipboard: 'green',
+	clipboard: 'blue',
 	heart: 'coral',
-	droplet: 'coral',
-	body: 'coral',
-	mic: 'purple',
-	users: 'green',
-	tv: 'purple',
+	droplet: 'pink',
+	body: 'amber',
+	mic: 'green',
+	users: 'indigo',
+	tv: 'sky',
 };
 ---
 
@@ -120,6 +123,11 @@ const iconTones: Record<string, 'green' | 'purple' | 'coral'> = {
 		margin-bottom: 16px;
 	}
 
+	.icon.tone-teal {
+		background: #e6f7f4;
+		color: #0f766e;
+	}
+
 	.icon.tone-green {
 		background: #e8f5ef;
 		color: #1a7f5a;
@@ -130,9 +138,34 @@ const iconTones: Record<string, 'green' | 'purple' | 'coral'> = {
 		color: #7c3aed;
 	}
 
+	.icon.tone-blue {
+		background: #e8f0fe;
+		color: #2563eb;
+	}
+
 	.icon.tone-coral {
 		background: #fdeee8;
 		color: #d4534a;
+	}
+
+	.icon.tone-pink {
+		background: #fce7f3;
+		color: #db2777;
+	}
+
+	.icon.tone-amber {
+		background: #fef3c7;
+		color: #d97706;
+	}
+
+	.icon.tone-indigo {
+		background: #e0e7ff;
+		color: #4f46e5;
+	}
+
+	.icon.tone-sky {
+		background: #e0f2fe;
+		color: #0284c7;
 	}
 
 	.card h3 {
