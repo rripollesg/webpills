@@ -33,7 +33,7 @@ export const fr: UI = {
 	stats: {
 		items: [
 			{ value: 'TV', label: 'Notifications et Pills TV' },
-			{ value: '7', label: "Langues d'interface" },
+			{ value: '6', label: "Langues d'interface" },
 			{ value: '6+', label: 'Constantes ajoutables' },
 			{ value: 'AES-256', label: 'Sauvegardes chiffrées' },
 		],
@@ -174,7 +174,7 @@ export const fr: UI = {
 			},
 			{
 				id: 'ciclo-informe',
-				title: 'Rapport du cycle',
+				title: 'Rapport du cycle menstruel',
 				caption: 'PDF avec durée moyenne, timeline des phases et symptômes enregistrés.',
 			},
 			{

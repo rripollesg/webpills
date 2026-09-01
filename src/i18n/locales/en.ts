@@ -33,7 +33,7 @@ export const en: UI = {
 	stats: {
 		items: [
 			{ value: 'TV', label: 'Alerts & Pills TV' },
-			{ value: '7', label: 'Interface languages' },
+			{ value: '6', label: 'Interface languages' },
 			{ value: '6+', label: 'Addable vitals' },
 			{ value: 'AES-256', label: 'Encrypted backups' },
 		],
@@ -174,7 +174,7 @@ export const en: UI = {
 			},
 			{
 				id: 'ciclo-informe',
-				title: 'Cycle report',
+				title: 'Menstrual cycle report',
 				caption: 'PDF with average length, phase timeline and logged symptoms.',
 			},
 			{

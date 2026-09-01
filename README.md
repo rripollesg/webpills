@@ -13,8 +13,7 @@ Landing page estática de **Pills** (Astro): medicación, historial clínico, co
 | Français | `/fr/` |
 | Deutsch | `/de/` |
 | Italiano | `/it/` |
-| Português (BR) | `/pt/` |
-| Português (PT) | `/pt-PT/` |
+| Português | `/pt/` |
 
 Traducciones en `src/i18n/locales/`.
 
