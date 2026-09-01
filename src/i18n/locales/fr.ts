@@ -176,7 +176,6 @@ export const fr: UI = {
 				id: 'ciclo-informe',
 				title: 'Rapport du cycle menstruel',
 				caption: 'PDF avec durée moyenne, timeline des phases et symptômes enregistrés.',
-				legalNote: 'Document d’orientation ; ne remplace pas un avis médical.',
 			},
 			{
 				id: 'calendario',
@@ -340,5 +339,7 @@ export const fr: UI = {
 		rights: 'Tous droits réservés.',
 		disclaimer:
 			"Pills est un outil informatif et d'organisation personnelle. En cas de doute sur votre santé, consultez un professionnel.",
+		creditsBefore: 'Site développé par ',
+		creditsLink: 'serefor.com',
 	},
 };

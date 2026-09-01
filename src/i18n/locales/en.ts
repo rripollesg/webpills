@@ -176,7 +176,6 @@ export const en: UI = {
 				id: 'ciclo-informe',
 				title: 'Menstrual cycle report',
 				caption: 'PDF with average length, phase timeline and logged symptoms.',
-				legalNote: 'Orientation report only; not a substitute for medical advice.',
 			},
 			{
 				id: 'calendario',
@@ -340,5 +339,7 @@ export const en: UI = {
 		rights: 'All rights reserved.',
 		disclaimer:
 			'Pills is an informational and personal organisation tool. For any health concerns, consult a professional.',
+		creditsBefore: 'Site by ',
+		creditsLink: 'serefor.com',
 	},
 };

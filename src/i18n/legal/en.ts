@@ -14,7 +14,7 @@ export const legalEn: LegalPage = {
 			id: 'titular',
 			title: '1. Site owner',
 			body: [
-				'Owner: Serefor (publisher of the Pills application).',
+				'Owner: Serefor (www.serefor.com), publisher of the Pills application.',
 				'Website: pills.serefor.com.',
 				'Contact: via the channels listed on the official store listings or on serefor.com.',
 			],
