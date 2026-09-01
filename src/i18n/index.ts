@@ -1,5 +1,6 @@
 import type { UI } from './types';
 import type { PrivacyPage } from './privacy-types';
+import type { LegalPage } from './legal-types';
 import { es } from './locales/es';
 import { en } from './locales/en';
 import { fr } from './locales/fr';
@@ -12,9 +13,16 @@ import { privacyFr } from './privacy/fr';
 import { privacyDe } from './privacy/de';
 import { privacyIt } from './privacy/it';
 import { privacyPt } from './privacy/pt';
+import { legalEs } from './legal/es';
+import { legalEn } from './legal/en';
+import { legalFr } from './legal/fr';
+import { legalDe } from './legal/de';
+import { legalIt } from './legal/it';
+import { legalPt } from './legal/pt';
 
 export type { UI } from './types';
 export type { PrivacyPage } from './privacy-types';
+export type { LegalPage } from './legal-types';
 
 export const languages = {
 	es: 'Español',
@@ -71,4 +79,17 @@ export const privacyUi: Record<Lang, PrivacyPage> = {
 
 export function usePrivacy(lang: Lang) {
 	return privacyUi[lang] ?? privacyUi[defaultLang];
+}
+
+export const legalUi: Record<Lang, LegalPage> = {
+	es: legalEs,
+	en: legalEn,
+	fr: legalFr,
+	de: legalDe,
+	it: legalIt,
+	pt: legalPt,
+};
+
+export function useLegal(lang: Lang) {
+	return legalUi[lang] ?? legalUi[defaultLang];
 }

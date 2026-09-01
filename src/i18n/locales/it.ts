@@ -176,6 +176,7 @@ export const it: UI = {
 				id: 'ciclo-informe',
 				title: 'Report del ciclo mestruale',
 				caption: 'PDF con durata media, timeline delle fasi e sintomi registrati.',
+				legalNote: 'Report orientativo; non sostituisce il parere medico.',
 			},
 			{
 				id: 'calendario',
