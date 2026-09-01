@@ -157,7 +157,7 @@ export const es: UI = {
 		eyebrow: 'Capturas',
 		title: 'La app, tal como la usas cada día',
 		description:
-			'Medicación, historial clínico, diario, vitales con sueño y ciclo — capturas reales de Pills v2.',
+			'Medicación, historial clínico, diario, vitales con sueño y ciclo.',
 		gallery: [
 			{
 				id: 'historial',
