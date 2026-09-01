@@ -170,9 +170,9 @@ export const ptPT: UI = {
 				caption: 'Perguntas ao médico, notas e acompanhamento de sintomas.',
 			},
 			{
-				id: 'dolor',
-				title: 'Diário de dor',
-				caption: 'Mapa corporal com zonas marcadas e intensidade EVA.',
+				id: 'ciclo-informe',
+				title: 'Relatório do ciclo',
+				caption: 'PDF com duração média, timeline de fases e sintomas registados.',
 			},
 			{
 				id: 'calendario',
@@ -190,9 +190,9 @@ export const ptPT: UI = {
 				caption: 'Glicose CGM, sono da pulsera, pressão, IMC, temperatura, FC e SpO₂.',
 			},
 			{
-				id: 'ciclo',
-				title: 'Ciclo menstrual',
-				caption: 'Calendário, fases, previsões e fluxo diário.',
+				id: 'ciclo-registro',
+				title: 'Registo do ciclo',
+				caption: 'Fluxo diário, sintomas e corrimento com chips rápidos.',
 			},
 			{
 				id: 'perfil',
