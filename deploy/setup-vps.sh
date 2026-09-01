@@ -5,9 +5,9 @@
 
 set -euo pipefail
 
-DEPLOY_PATH="${DEPLOY_PATH:-/var/www/webpills}"
-DOMAIN="${DOMAIN:-serefor.com}"
-DOMAIN_WWW="${DOMAIN_WWW:-www.serefor.com}"
+DEPLOY_PATH="${DEPLOY_PATH:-/var/www/serefor_com_usr/data/www/pills.serefor.com}"
+DOMAIN="${DOMAIN:-pills.serefor.com}"
+DOMAIN_WWW="${DOMAIN_WWW:-www.pills.serefor.com}"
 EC2_DNS="${EC2_DNS:-ec2-13-62-220-28.eu-north-1.compute.amazonaws.com}"
 VPS_IP="${VPS_IP:-13.62.220.28}"
 
