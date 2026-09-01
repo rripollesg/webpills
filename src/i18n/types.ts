@@ -69,7 +69,7 @@ export type UI = {
 		eyebrow: string;
 		title: string;
 		description: string;
-		gallery: { id: string; title: string; caption: string; legalNote?: string }[];
+		gallery: { id: string; title: string; caption: string }[];
 	};
 	voice: {
 		eyebrow: string;
@@ -139,6 +139,8 @@ export type UI = {
 		contact: string;
 		rights: string;
 		disclaimer: string;
+		creditsBefore: string;
+		creditsLink: string;
 	};
 };
 

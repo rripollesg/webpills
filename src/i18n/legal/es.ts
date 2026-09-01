@@ -14,7 +14,7 @@ export const legalEs: LegalPage = {
 			id: 'titular',
 			title: '1. Titular del sitio',
 			body: [
-				'Titular: Serefor (editor de la aplicación Pills).',
+				'Titular: Serefor (www.serefor.com), editor de la aplicación Pills.',
 				'Sitio web: pills.serefor.com.',
 				'Contacto: a través de los canales indicados en la ficha de la app en las tiendas oficiales o en la sección de contacto de serefor.com.',
 			],
