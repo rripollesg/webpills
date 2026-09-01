@@ -33,7 +33,7 @@ export const de: UI = {
 	stats: {
 		items: [
 			{ value: 'TV', label: 'Erinnerungen & Pills TV' },
-			{ value: '7', label: 'Oberflächensprachen' },
+			{ value: '6', label: 'Oberflächensprachen' },
 			{ value: '6+', label: 'Hinzufügbare Vitalwerte' },
 			{ value: 'AES-256', label: 'Verschlüsselte Backups' },
 		],
@@ -174,7 +174,7 @@ export const de: UI = {
 			},
 			{
 				id: 'ciclo-informe',
-				title: 'Zyklusbericht',
+				title: 'Menstruationszyklus-Bericht',
 				caption: 'PDF mit durchschnittlicher Dauer, Phasen-Timeline und protokollierten Symptomen.',
 			},
 			{

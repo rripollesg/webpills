@@ -33,7 +33,7 @@ export const it: UI = {
 	stats: {
 		items: [
 			{ value: 'TV', label: 'Notifiche e Pills TV' },
-			{ value: '7', label: 'Lingue interfaccia' },
+			{ value: '6', label: 'Lingue interfaccia' },
 			{ value: '6+', label: 'Costanti aggiungibili' },
 			{ value: 'AES-256', label: 'Backup crittografati' },
 		],
@@ -174,7 +174,7 @@ export const it: UI = {
 			},
 			{
 				id: 'ciclo-informe',
-				title: 'Report del ciclo',
+				title: 'Report del ciclo mestruale',
 				caption: 'PDF con durata media, timeline delle fasi e sintomi registrati.',
 			},
 			{

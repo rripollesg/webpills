@@ -35,9 +35,9 @@ const gallery = galleryOrder
 		<div class="gallery reveal">
 			{
 				gallery.map((item) => (
-					<figure class="shot">
+					<figure class:list={['shot', item.id === 'ciclo-informe' && 'shot--document']}>
 						<div class="phone">
-							<div class="phone-frame">
+							<div class:list={['phone-frame', item.id === 'ciclo-informe' && 'phone-frame--document']}>
 								<img
 									src={screenshotFiles[item.id]}
 									alt={item.title}
@@ -116,6 +116,16 @@ const gallery = galleryOrder
 		height: auto;
 		display: block;
 		border-radius: 20px;
+	}
+
+	.phone-frame--document {
+		background: #ffffff;
+		border-color: rgba(26, 168, 155, 0.22);
+	}
+
+	.phone-frame--document img {
+		object-fit: contain;
+		background: #ffffff;
 	}
 
 	figcaption {
