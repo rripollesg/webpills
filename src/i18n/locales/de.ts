@@ -157,7 +157,7 @@ export const de: UI = {
 		eyebrow: 'Screenshots',
 		title: 'Die App, wie Sie sie täglich nutzen',
 		description:
-			'Medikation, klinische Historie, Tagebuch, Vitalwerte mit Schlaf und Zyklus — echte Screenshots von Pills v2.',
+			'Medikation, klinische Historie, Tagebuch, Vitalwerte mit Schlaf und Zyklus.',
 		gallery: [
 			{
 				id: 'historial',
