@@ -109,7 +109,7 @@ export const en: UI = {
 				icon: 'tv',
 				title: 'Pills TV',
 				description:
-					'Companion on Android TV / Fire TV / tablet over local Wi‑Fi, paired with code or QR.',
+					'Add-on on Android TV / Fire TV / tablet over local Wi‑Fi, paired with code or QR.',
 			},
 		],
 	},
@@ -209,14 +209,6 @@ export const en: UI = {
 		title: 'Ask and mark doses without touching your phone',
 		description: 'Works with Siri, Google Assistant and Alexa. Data is read on your device.',
 		hint: 'Open Pills at least once, with medication and today’s doses on the active profile.',
-		moreLabel: 'Show more detail',
-		actionsTitle: 'Deep links',
-		actions: [
-			{ name: 'What’s due', link: 'pills://dose/upcoming' },
-			{ name: 'Mark dose', link: 'pills://dose/taken' },
-			{ name: 'Skip dose', link: 'pills://dose/skipped' },
-			{ name: 'Reminders', link: 'pills://reminders' },
-		],
 		assistants: [
 			{
 				id: 'siri',
@@ -225,17 +217,12 @@ export const en: UI = {
 				steps: [
 					'Install Pills and open it once.',
 					'Settings → Siri & Search → Pills.',
-					'Say the phrase or pin it in Shortcuts.',
+					'Say one of the phrases below.',
 				],
 				phrases: [
 					'"What pills do I need in Pills"',
 					'"Mark dose taken in Pills"',
 					'"Skip dose in Pills"',
-				],
-				altTitle: 'Manual shortcut',
-				altSteps: [
-					'Shortcuts → + → Open URL → pills://dose/upcoming.',
-					'Name it and trigger with Siri.',
 				],
 			},
 			{
@@ -245,17 +232,12 @@ export const en: UI = {
 				steps: [
 					'Install Pills and open it once.',
 					'Set Google as the default assistant.',
-					'Say “Ok Google” + the phrase (indexing may take a few hours).',
+					'Say “Ok Google” + one of the phrases below.',
 				],
 				phrases: [
 					'"What pills do I need in Pills"',
 					'"Mark dose in Pills"',
 					'"Skip dose in Pills"',
-				],
-				altTitle: 'Google Home routine',
-				altSteps: [
-					'Google Home → Automations → custom voice phrase.',
-					'Action → Open URL → pills://dose/upcoming.',
 				],
 			},
 			{
@@ -293,7 +275,7 @@ export const en: UI = {
 				icon: 'tv',
 				title: 'Pills TV',
 				description:
-					'Companion for Android TV, Fire TV or tablet, synced over local Wi‑Fi.',
+					'Add-on for Android TV, Fire TV or tablet, synced over local Wi‑Fi.',
 			},
 		],
 	},

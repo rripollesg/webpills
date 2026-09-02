@@ -59,7 +59,7 @@ Basada en la política de privacidad de la app Pills.
 
 Guía corta para usuarios en la landing: **[Comandos de voz](https://pills.serefor.com/#voz)** (`#voz` / `/en/#voz` / …).
 
-Pasos y frases clave por asistente; deep links y alternativas (Atajos / Google Home) van en «Ver más detalle».
+Pasos y frases clave por asistente (Siri, Google, Alexa).
 
 Documentación técnica completa en el README del proyecto Flutter (`../README.md`, sección «Comandos de voz»).
 

@@ -53,35 +53,6 @@ const assistants = t.voice.assistants;
 							</ul>
 
 							{assistant.limitNote && <p class="limit-note">{assistant.limitNote}</p>}
-
-							<details class="more">
-								<summary>{t.voice.moreLabel}</summary>
-								<div class="more-body">
-									{
-										assistant.altTitle && assistant.altSteps && (
-											<div class="alt">
-												<strong>{assistant.altTitle}</strong>
-												<ol>
-													{assistant.altSteps.map((step) => <li>{step}</li>)}
-												</ol>
-											</div>
-										)
-									}
-									<div class="links">
-										<strong>{t.voice.actionsTitle}</strong>
-										<ul>
-											{
-												t.voice.actions.map((action) => (
-													<li>
-														<span>{action.name}</span>
-														<code>{action.link}</code>
-													</li>
-												))
-											}
-										</ul>
-									</div>
-								</div>
-							</details>
 						</article>
 					))
 				}
@@ -222,83 +193,6 @@ const assistants = t.voice.assistants;
 		color: rgba(255, 220, 216, 0.9);
 		font-size: 13px;
 		line-height: 1.45;
-	}
-
-	.more {
-		margin-top: 18px;
-		border-top: 1px solid rgba(255, 255, 255, 0.08);
-		padding-top: 12px;
-	}
-
-	.more summary {
-		cursor: pointer;
-		font-size: 13px;
-		font-weight: 600;
-		color: var(--mint);
-		list-style: none;
-	}
-
-	.more summary::-webkit-details-marker {
-		display: none;
-	}
-
-	.more summary::before {
-		content: '+ ';
-	}
-
-	.more[open] summary::before {
-		content: '− ';
-	}
-
-	.more-body {
-		margin-top: 14px;
-		display: grid;
-		gap: 16px;
-	}
-
-	.alt strong,
-	.links strong {
-		display: block;
-		font-size: 12px;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		color: rgba(232, 241, 244, 0.5);
-		margin-bottom: 8px;
-	}
-
-	.alt ol {
-		margin: 0;
-		padding-left: 18px;
-		color: rgba(232, 241, 244, 0.72);
-		font-size: 13px;
-		line-height: 1.5;
-	}
-
-	.alt ol li + li {
-		margin-top: 4px;
-	}
-
-	.links ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: grid;
-		gap: 8px;
-	}
-
-	.links li {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		gap: 6px 12px;
-		font-size: 13px;
-		color: rgba(232, 241, 244, 0.72);
-	}
-
-	.links code {
-		font-family: var(--font-mono);
-		font-size: 11px;
-		color: var(--mint);
 	}
 
 	@media (max-width: 560px) {

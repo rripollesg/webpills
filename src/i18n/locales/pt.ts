@@ -109,7 +109,7 @@ export const pt: UI = {
 				icon: 'tv',
 				title: 'Pills TV',
 				description:
-					'Companion para Android TV / Fire TV / tablet via Wi‑Fi local, pareamento por código ou QR.',
+					'Complemento para Android TV / Fire TV / tablet via Wi‑Fi local, pareamento por código ou QR.',
 			},
 		],
 	},
@@ -209,14 +209,6 @@ export const pt: UI = {
 		title: 'Pergunte e marque doses sem tocar no celular',
 		description: 'Compatível com Siri, Google Assistant e Alexa. Os dados são lidos no dispositivo.',
 		hint: 'Abra o Pills pelo menos uma vez, com medicamentos e doses de hoje no perfil ativo.',
-		moreLabel: 'Ver mais detalhes',
-		actionsTitle: 'Deep links',
-		actions: [
-			{ name: 'O que tomar', link: 'pills://dose/upcoming' },
-			{ name: 'Marcar dose', link: 'pills://dose/taken' },
-			{ name: 'Pular dose', link: 'pills://dose/skipped' },
-			{ name: 'Lembretes', link: 'pills://reminders' },
-		],
 		assistants: [
 			{
 				id: 'siri',
@@ -225,17 +217,12 @@ export const pt: UI = {
 				steps: [
 					'Instale o Pills e abra uma vez.',
 					'Ajustes → Siri e busca → Pills.',
-					'Diga a frase ou fixe nos Atalhos.',
+					'Diga uma das frases abaixo.',
 				],
 				phrases: [
 					'«Quais remédios devo tomar no Pills»',
 					'«Marcar dose no Pills»',
 					'«Pular dose no Pills»',
-				],
-				altTitle: 'Atalho manual',
-				altSteps: [
-					'Atalhos → + → Abrir URL → pills://dose/upcoming.',
-					'Dê um nome e ative com Siri.',
 				],
 			},
 			{
@@ -245,17 +232,12 @@ export const pt: UI = {
 				steps: [
 					'Instale o Pills e abra uma vez.',
 					'Use o Google como assistente padrão.',
-					'Diga «Ok Google» + a frase (pode levar horas para indexar).',
+					'Diga «Ok Google» + uma das frases abaixo.',
 				],
 				phrases: [
 					'«Quais remédios devo tomar no Pills»',
 					'«Marcar dose no Pills»',
 					'«Pular dose no Pills»',
-				],
-				altTitle: 'Rotina Google Home',
-				altSteps: [
-					'Google Home → Automações → frase personalizada.',
-					'Ação → Abrir URL → pills://dose/upcoming.',
 				],
 			},
 			{
@@ -293,7 +275,7 @@ export const pt: UI = {
 				icon: 'tv',
 				title: 'Pills TV',
 				description:
-					'Companion para Android TV, Fire TV ou tablet, sincronizado por Wi‑Fi local.',
+					'Complemento para Android TV, Fire TV ou tablet, sincronizado por Wi‑Fi local.',
 			},
 		],
 	},

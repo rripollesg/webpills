@@ -109,7 +109,7 @@ export const it: UI = {
 				icon: 'tv',
 				title: 'Pills TV',
 				description:
-					'Companion per Android TV / Fire TV / tablet in Wi‑Fi locale, abbinamento con codice o QR.',
+					'Complemento per Android TV / Fire TV / tablet in Wi‑Fi locale, abbinamento con codice o QR.',
 			},
 		],
 	},
@@ -209,14 +209,6 @@ export const it: UI = {
 		title: 'Chiedi e segna le assunzioni senza toccare il telefono',
 		description: 'Compatibile con Siri, Google Assistant e Alexa. I dati si leggono sul dispositivo.',
 		hint: 'Apri Pills almeno una volta, con farmaci e assunzioni di oggi sul profilo attivo.',
-		moreLabel: 'Mostra più dettagli',
-		actionsTitle: 'Deep link',
-		actions: [
-			{ name: 'Cosa assumere', link: 'pills://dose/upcoming' },
-			{ name: 'Segna assunzione', link: 'pills://dose/taken' },
-			{ name: 'Salta assunzione', link: 'pills://dose/skipped' },
-			{ name: 'Promemoria', link: 'pills://reminders' },
-		],
 		assistants: [
 			{
 				id: 'siri',
@@ -232,11 +224,6 @@ export const it: UI = {
 					'«Segna assunzione in Pills»',
 					'«Salta assunzione in Pills»',
 				],
-				altTitle: 'Comando manuale',
-				altSteps: [
-					'Comandi → + → Apri URL → pills://dose/upcoming.',
-					'Dagli un nome e attivalo con Siri.',
-				],
 			},
 			{
 				id: 'google',
@@ -251,11 +238,6 @@ export const it: UI = {
 					'«Quali farmaci devo prendere in Pills»',
 					'«Segna assunzione in Pills»',
 					'«Salta assunzione in Pills»',
-				],
-				altTitle: 'Routine Google Home',
-				altSteps: [
-					'Google Home → Automazioni → frase personalizzata.',
-					'Azione → Apri URL → pills://dose/upcoming.',
 				],
 			},
 			{
@@ -293,7 +275,7 @@ export const it: UI = {
 				icon: 'tv',
 				title: 'Pills TV',
 				description:
-					'Companion per Android TV, Fire TV o tablet, sincronizzata in Wi‑Fi locale.',
+					'Complemento per Android TV, Fire TV o tablet, sincronizzato in Wi‑Fi locale.',
 			},
 		],
 	},
