@@ -120,7 +120,11 @@ export type UI = {
 	faq: {
 		eyebrow: string;
 		title: string;
-		items: { question: string; answer: string }[];
+		items: {
+			question: string;
+			answer: string;
+			links?: { label: string; url: string }[];
+		}[];
 	};
 	cta: {
 		title: string;

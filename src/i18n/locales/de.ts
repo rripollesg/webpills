@@ -352,6 +352,17 @@ export const de: UI = {
 				answer:
 					'Ja. Auf Android und iOS nutzt die Datenbank SQLCipher mit einem Schlüssel in Keychain/Keystore. Backups sind lokal und passwortverschlüsselt.',
 			},
+			{
+				question: 'Welche pills://-Links nutzen Sprachbefehle?',
+				answer:
+					'Pills öffnet die App über sichere Deep Links. Siri und Google Assistant nutzen sie, wenn Sie die Formulierungen im Abschnitt Sprachbefehle sagen — keine manuelle Einrichtung nötig. Für einen eigenen Kurzbefehl (Kurzbefehle auf iOS oder Google-Home-Routine) können Sie diese URLs verwenden:',
+				links: [
+					{ label: 'Welche Pillen fällig sind', url: 'pills://dose/upcoming' },
+					{ label: 'Einnahme markieren', url: 'pills://dose/taken' },
+					{ label: 'Einnahme überspringen', url: 'pills://dose/skipped' },
+					{ label: 'Erinnerungen öffnen', url: 'pills://reminders' },
+				],
+			},
 		],
 	},
 	cta: {

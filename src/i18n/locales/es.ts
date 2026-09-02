@@ -352,6 +352,17 @@ export const es: UI = {
 				answer:
 					'Sí. En Android e iOS la base de datos usa SQLCipher con clave en Keychain/Keystore. Los backups son locales y cifrados con contraseña.',
 			},
+			{
+				question: '¿Qué enlaces pills:// usan los comandos de voz?',
+				answer:
+					'Pills abre la app con enlaces profundos seguros. Siri y Google Assistant los usan al decir las frases de la sección Comandos de voz; no hace falta configurarlos a mano. Si quieres un atajo personalizado (app Atajos en iOS o rutina en Google Home), puedes usar estas URLs:',
+				links: [
+					{ label: 'Qué pastillas me tocan', url: 'pills://dose/upcoming' },
+					{ label: 'Marcar toma', url: 'pills://dose/taken' },
+					{ label: 'Omitir toma', url: 'pills://dose/skipped' },
+					{ label: 'Abrir recordatorios', url: 'pills://reminders' },
+				],
+			},
 		],
 	},
 	cta: {
