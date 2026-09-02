@@ -57,13 +57,9 @@ Basada en la política de privacidad de la app Pills.
 
 ## Comandos de voz (Siri, Google Assistant, Alexa)
 
-La guía de configuración para usuarios está en la landing, sección **[Comandos de voz](https://pills.serefor.com/#voz)** (`#voz` en cada idioma: `/en/#voz`, `/fr/#voz`, …).
+Guía corta para usuarios en la landing: **[Comandos de voz](https://pills.serefor.com/#voz)** (`#voz` / `/en/#voz` / …).
 
-Incluye:
-
-- Requisitos previos (app instalada, perfil activo, tomas de hoy).
-- Tabla de **deep links** (`pills://dose/upcoming`, `pills://dose/taken`, …).
-- Pasos de configuración para **Siri** (iOS), **Google Assistant** (Android + rutina Google Home) y **Alexa** (skill + límite de privacidad).
+Pasos y frases clave por asistente; deep links y alternativas (Atajos / Google Home) van en «Ver más detalle».
 
 Documentación técnica completa en el README del proyecto Flutter (`../README.md`, sección «Comandos de voz»).
 

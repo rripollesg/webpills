@@ -15,131 +15,76 @@ const assistants = t.voice.assistants;
 			<span class="eyebrow voice-eyebrow">{t.voice.eyebrow}</span>
 			<h2>{t.voice.title}</h2>
 			<p>{t.voice.description}</p>
+			<p class="hint">{t.voice.hint}</p>
 		</div>
 
-		<div class="voice-layout reveal">
-			<aside class="voice-sidebar">
-				<div class="panel">
-					<h3>{t.voice.requirementsTitle}</h3>
-					<ul>
-						{t.voice.requirements.map((item) => <li>{item}</li>)}
-					</ul>
-				</div>
+		<div class="tabs reveal">
+			<div class="tab-nav">
+				{
+					assistants.map((assistant, index) => (
+						<div class="tab-nav-item">
+							<input
+								type="radio"
+								name="voice-assistant"
+								id={`voice-tab-${assistant.id}`}
+								class="tab-input"
+								checked={index === 0}
+							/>
+							<label for={`voice-tab-${assistant.id}`} class="tab-label">
+								{assistant.name}
+							</label>
+						</div>
+					))
+				}
+			</div>
 
-				<div class="panel">
-					<h3>{t.voice.actionsTitle}</h3>
-					<div class="actions-table-wrap">
-						<table class="actions-table">
-							<thead>
-								<tr>
-									<th scope="col">{t.voice.actionsColAction}</th>
-									<th scope="col">{t.voice.actionsColLink}</th>
-								</tr>
-							</thead>
-							<tbody>
-								{
-									t.voice.actions.map((action) => (
-										<tr>
-											<td>
-												<strong>{action.name}</strong>
-												<span>{action.effect}</span>
-											</td>
-											<td>
-												<code>{action.link}</code>
-											</td>
-										</tr>
-									))
-								}
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</aside>
+			<div class="tab-panels">
+				{
+					assistants.map((assistant) => (
+						<article class="tab-panel" data-assistant={assistant.id}>
+							<p class="platform">{assistant.platform}</p>
 
-			<div class="voice-setup">
-				<h3 class="setup-heading">{t.voice.setupTitle}</h3>
+							<ol class="steps">
+								{assistant.steps.map((step) => <li>{step}</li>)}
+							</ol>
 
-				<div class="tabs">
-					<div class="tab-nav">
-						{
-							assistants.map((assistant, index) => (
-								<div class="tab-nav-item">
-									<input
-										type="radio"
-										name="voice-assistant"
-										id={`voice-tab-${assistant.id}`}
-										class="tab-input"
-										checked={index === 0}
-									/>
-									<label for={`voice-tab-${assistant.id}`} class="tab-label">
-										{assistant.name}
-									</label>
-								</div>
-							))
-						}
-					</div>
+							<ul class="phrases">
+								{assistant.phrases.map((phrase) => <li>{phrase}</li>)}
+							</ul>
 
-					<div class="tab-panels">
-						{
-							assistants.map((assistant) => (
-								<article class="tab-panel" data-assistant={assistant.id}>
-									<header class="assistant-head">
-										<span class="mic-icon" aria-hidden="true">
-											<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-												<rect x="9.2" y="3.5" width="5.6" height="10" rx="2.8" stroke="currentColor" stroke-width="1.8" />
-												<path
-													d="M6.5 11.5a5.5 5.5 0 0 0 11 0M12 17v3.5M9.5 20.5h5"
-													stroke="currentColor"
-													stroke-width="1.8"
-													stroke-linecap="round"
-												/>
-											</svg>
-										</span>
-										<div>
-											<h4>{assistant.name}</h4>
-											<p>{assistant.platform}</p>
-										</div>
-									</header>
+							{assistant.limitNote && <p class="limit-note">{assistant.limitNote}</p>}
 
-									<div class="setup-block">
-										<h5>{assistant.stepsTitle}</h5>
-										<ol>
-											{assistant.steps.map((step) => <li>{step}</li>)}
-										</ol>
-									</div>
-
-									<div class="setup-block">
-										<h5>{assistant.phrasesTitle}</h5>
-										<ul class="phrase-list">
-											{
-												assistant.phrases.map((phrase) => (
-													<li>
-														<span class="phrase-action">{phrase.action}</span>
-														<span class="phrase-example">{phrase.example}</span>
-													</li>
-												))
-											}
-										</ul>
-									</div>
-
+							<details class="more">
+								<summary>{t.voice.moreLabel}</summary>
+								<div class="more-body">
 									{
 										assistant.altTitle && assistant.altSteps && (
-											<div class="setup-block alt-block">
-												<h5>{assistant.altTitle}</h5>
+											<div class="alt">
+												<strong>{assistant.altTitle}</strong>
 												<ol>
 													{assistant.altSteps.map((step) => <li>{step}</li>)}
 												</ol>
 											</div>
 										)
 									}
-
-									{assistant.tip && <p class="tip">{assistant.tip}</p>}
-									{assistant.limitNote && <p class="limit-note">{assistant.limitNote}</p>}
-								</article>
-							))
-						}
-					</div>
-				</div>
+									<div class="links">
+										<strong>{t.voice.actionsTitle}</strong>
+										<ul>
+											{
+												t.voice.actions.map((action) => (
+													<li>
+														<span>{action.name}</span>
+														<code>{action.link}</code>
+													</li>
+												))
+											}
+										</ul>
+									</div>
+								</div>
+							</details>
+						</article>
+					))
+				}
 			</div>
 		</div>
 	</div>
@@ -159,10 +104,7 @@ const assistants = t.voice.assistants;
 		border-color: rgba(255, 255, 255, 0.15);
 	}
 
-	.voice h2,
-	.voice h3,
-	.voice h4,
-	.voice h5 {
+	.voice h2 {
 		color: #fff;
 	}
 
@@ -170,96 +112,15 @@ const assistants = t.voice.assistants;
 		color: rgba(232, 241, 244, 0.75);
 	}
 
-	.voice-layout {
-		display: grid;
-		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
-		gap: 24px;
-		align-items: start;
-		margin-top: 40px;
-	}
-
-	.voice-sidebar {
-		display: grid;
-		gap: 16px;
-	}
-
-	.panel {
-		padding: 22px;
-		border-radius: var(--radius-md);
-		border: 1px solid rgba(255, 255, 255, 0.12);
-		background: rgba(255, 255, 255, 0.04);
-	}
-
-	.panel h3 {
-		font-size: 15px;
-		margin-bottom: 12px;
-	}
-
-	.panel ul {
-		margin: 0;
-		padding-left: 18px;
-		color: rgba(232, 241, 244, 0.72);
+	.hint {
+		margin-top: 12px;
 		font-size: 14px;
-		line-height: 1.55;
-	}
-
-	.panel li + li {
-		margin-top: 8px;
-	}
-
-	.actions-table-wrap {
-		overflow-x: auto;
-	}
-
-	.actions-table {
-		width: 100%;
-		border-collapse: collapse;
-		font-size: 13px;
-	}
-
-	.actions-table th {
-		text-align: left;
-		color: rgba(232, 241, 244, 0.55);
-		font-weight: 600;
-		font-size: 11px;
-		text-transform: uppercase;
-		letter-spacing: 0.06em;
-		padding-bottom: 10px;
-	}
-
-	.actions-table td {
-		padding: 10px 0;
-		border-top: 1px solid rgba(255, 255, 255, 0.08);
-		vertical-align: top;
-	}
-
-	.actions-table td strong {
-		display: block;
-		color: #fff;
-		font-size: 13px;
-		margin-bottom: 4px;
-	}
-
-	.actions-table td span {
-		display: block;
-		color: rgba(232, 241, 244, 0.6);
-		font-size: 12px;
-		line-height: 1.45;
-	}
-
-	.actions-table code {
-		font-family: var(--font-mono);
-		font-size: 11px;
-		color: var(--mint);
-		word-break: break-all;
-	}
-
-	.setup-heading {
-		font-size: 18px;
-		margin-bottom: 16px;
+		color: rgba(232, 241, 244, 0.55) !important;
 	}
 
 	.tabs {
+		max-width: 720px;
+		margin: 36px auto 0;
 		border-radius: var(--radius-md);
 		border: 1px solid rgba(255, 255, 255, 0.12);
 		background: rgba(255, 255, 255, 0.03);
@@ -315,121 +176,129 @@ const assistants = t.voice.assistants;
 		display: block;
 	}
 
-	.assistant-head {
-		display: flex;
-		align-items: center;
-		gap: 14px;
-		margin-bottom: 22px;
-	}
-
-	.mic-icon {
-		display: inline-grid;
-		place-items: center;
-		width: 44px;
-		height: 44px;
-		border-radius: 14px;
-		background: rgba(125, 255, 240, 0.12);
-		color: var(--mint);
-		flex-shrink: 0;
-	}
-
-	.assistant-head h4 {
-		font-size: 17px;
-		margin-bottom: 4px;
-	}
-
-	.assistant-head p {
-		margin: 0;
+	.platform {
+		margin: 0 0 16px;
 		font-size: 13px;
-		color: rgba(232, 241, 244, 0.6);
-	}
-
-	.setup-block + .setup-block {
-		margin-top: 20px;
-	}
-
-	.setup-block h5 {
-		font-size: 13px;
-		text-transform: uppercase;
-		letter-spacing: 0.06em;
 		color: rgba(232, 241, 244, 0.55);
-		margin-bottom: 10px;
 	}
 
-	.setup-block ol {
-		margin: 0;
+	.steps {
+		margin: 0 0 18px;
 		padding-left: 20px;
-		color: rgba(232, 241, 244, 0.78);
+		color: rgba(232, 241, 244, 0.82);
 		font-size: 14px;
-		line-height: 1.55;
+		line-height: 1.5;
 	}
 
-	.setup-block ol li + li {
-		margin-top: 8px;
+	.steps li + li {
+		margin-top: 6px;
 	}
 
-	.alt-block {
-		padding-top: 18px;
-		border-top: 1px solid rgba(255, 255, 255, 0.08);
-	}
-
-	.phrase-list {
+	.phrases {
 		list-style: none;
 		margin: 0;
 		padding: 0;
 		display: grid;
-		gap: 10px;
+		gap: 8px;
 	}
 
-	.phrase-list li {
+	.phrases li {
 		padding: 12px 14px;
 		border-radius: var(--radius-sm);
 		background: rgba(0, 0, 0, 0.18);
 		border: 1px solid rgba(255, 255, 255, 0.08);
-	}
-
-	.phrase-action {
-		display: block;
-		font-size: 12px;
-		font-weight: 700;
-		color: var(--mint);
-		margin-bottom: 4px;
-	}
-
-	.phrase-example {
-		display: block;
+		color: rgba(232, 241, 244, 0.88);
 		font-size: 14px;
-		color: rgba(232, 241, 244, 0.78);
 		font-style: italic;
-		line-height: 1.45;
-	}
-
-	.tip {
-		margin: 18px 0 0;
-		padding: 12px 14px;
-		border-radius: var(--radius-sm);
-		background: rgba(125, 255, 240, 0.08);
-		border: 1px solid rgba(125, 255, 240, 0.18);
-		color: rgba(232, 241, 244, 0.82);
-		font-size: 13px;
-		line-height: 1.5;
+		line-height: 1.4;
 	}
 
 	.limit-note {
-		margin: 18px 0 0;
+		margin: 16px 0 0;
 		padding: 12px 14px;
 		border-radius: var(--radius-sm);
 		background: rgba(212, 83, 74, 0.1);
 		border: 1px solid rgba(212, 83, 74, 0.22);
 		color: rgba(255, 220, 216, 0.9);
 		font-size: 13px;
+		line-height: 1.45;
+	}
+
+	.more {
+		margin-top: 18px;
+		border-top: 1px solid rgba(255, 255, 255, 0.08);
+		padding-top: 12px;
+	}
+
+	.more summary {
+		cursor: pointer;
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--mint);
+		list-style: none;
+	}
+
+	.more summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.more summary::before {
+		content: '+ ';
+	}
+
+	.more[open] summary::before {
+		content: '− ';
+	}
+
+	.more-body {
+		margin-top: 14px;
+		display: grid;
+		gap: 16px;
+	}
+
+	.alt strong,
+	.links strong {
+		display: block;
+		font-size: 12px;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: rgba(232, 241, 244, 0.5);
+		margin-bottom: 8px;
+	}
+
+	.alt ol {
+		margin: 0;
+		padding-left: 18px;
+		color: rgba(232, 241, 244, 0.72);
+		font-size: 13px;
 		line-height: 1.5;
 	}
 
-	@media (max-width: 900px) {
-		.voice-layout {
-			grid-template-columns: 1fr;
-		}
+	.alt ol li + li {
+		margin-top: 4px;
+	}
+
+	.links ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 8px;
+	}
+
+	.links li {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: 6px 12px;
+		font-size: 13px;
+		color: rgba(232, 241, 244, 0.72);
+	}
+
+	.links code {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		color: var(--mint);
 	}
 
 	@media (max-width: 560px) {
