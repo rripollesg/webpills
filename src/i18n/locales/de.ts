@@ -209,10 +209,111 @@ export const de: UI = {
 		title: 'Abfragen und markieren ohne das Handy zu berühren',
 		description:
 			'Kompatibel mit Siri, Google Assistant und Alexa über sichere Deep Links, die Pills öffnen und Ihre lokale Datenbank lesen.',
-		items: [
-			{ label: 'Siri', phrase: '„Welche Pillen muss ich in Pills nehmen?"' },
-			{ label: 'Google Assistant', phrase: '„Einnahme in Pills markieren"' },
-			{ label: 'Alexa', phrase: '„Sag Pills, die Einnahme zu überspringen"' },
+		requirementsTitle: 'Voraussetzungen',
+		requirements: [
+			'Pills installiert und mindestens einmal geöffnet (Profil angelegt, Medikamente hinzugefügt).',
+			'Einnahmen für heute im aktiven Profil des Geräts geplant.',
+			'Sprachaktionen nutzen immer das aktive Profil.',
+		],
+		actionsTitle: 'Verfügbare Aktionen',
+		actionsColAction: 'Aktion',
+		actionsColLink: 'Deep Link',
+		actions: [
+			{
+				name: 'Welche Pillen fällig sind',
+				link: 'pills://dose/upcoming',
+				effect: 'Liest anstehende Einnahmen für heute vor',
+			},
+			{
+				name: 'Einnahme markieren',
+				link: 'pills://dose/taken',
+				effect: 'Markiert die nächste anstehende Einnahme für heute',
+			},
+			{
+				name: 'Einnahme überspringen',
+				link: 'pills://dose/skipped',
+				effect: 'Überspringt die nächste anstehende Einnahme für heute',
+			},
+			{
+				name: 'Erinnerungen öffnen',
+				link: 'pills://reminders',
+				effect: 'Öffnet die Erinnerungsübersicht',
+			},
+		],
+		setupTitle: 'Einrichtung',
+		assistants: [
+			{
+				id: 'siri',
+				name: 'Siri',
+				platform: 'iPhone / iPad (iOS 16+)',
+				stepsTitle: 'Einrichtung',
+				steps: [
+					'Pills aus dem App Store installieren und mindestens einmal öffnen.',
+					'Einstellungen → Siri & Suchen → Pills: Siri-Zugriff prüfen.',
+					'(Optional) Kurzbefehle-App → App-Kurzbefehle → Pills.',
+				],
+				phrasesTitle: 'Beispielformulierungen',
+				phrases: [
+					{ action: 'Was fällig ist', example: '„Welche Pillen muss ich in Pills nehmen?"' },
+					{ action: 'Einnahme markieren', example: '„Einnahme in Pills markieren"' },
+					{ action: 'Überspringen', example: '„Sag Pills, die Einnahme zu überspringen"' },
+					{ action: 'Erinnerungen', example: '„Erinnerungen in Pills öffnen"' },
+				],
+				altTitle: 'Manueller Kurzbefehl (Alternative)',
+				altSteps: [
+					'Kurzbefehle → + → URL öffnen.',
+					'URL: pills://dose/upcoming (oder pills://dose/taken…).',
+					'Benennen und mit Siri oder Widget auslösen.',
+				],
+				tip: 'Spanische Formulierungen funktionieren ebenfalls.',
+			},
+			{
+				id: 'google',
+				name: 'Google Assistant',
+				platform: 'Android',
+				stepsTitle: 'Einrichtung',
+				steps: [
+					'Pills installieren (Play Store oder APK) und mindestens einmal öffnen.',
+					'Google als Standard-Assistenten prüfen (Einstellungen → Apps).',
+					'Sprache des Assistenten auf Deutsch, Spanisch oder Englisch belassen.',
+					'(Optional) Pills-Symbol lange drücken → Schnellaktionen.',
+				],
+				phrasesTitle: 'Beispielformulierungen',
+				phrases: [
+					{ action: 'Was fällig ist', example: '„Welche Pillen muss ich in Pills nehmen?"' },
+					{ action: 'Einnahme markieren', example: '„Einnahme in Pills markieren"' },
+					{ action: 'Überspringen', example: '„Einnahme in Pills überspringen"' },
+					{ action: 'Erinnerungen', example: '„Erinnerungen in Pills öffnen"' },
+				],
+				altTitle: 'Google-Home-Routine (zuverlässige Alternative)',
+				altSteps: [
+					'Google Home → Automatisierungen → + → Eigene Sprachphrase.',
+					'Aktion hinzufügen → Mit Apps interagieren → URL öffnen.',
+					'URL: pills://dose/upcoming.',
+				],
+				tip: 'Google braucht manchmal einige Stunden, um Kurzbefehle einer neu installierten App zu indexieren.',
+			},
+			{
+				id: 'alexa',
+				name: 'Alexa',
+				platform: 'Echo / Amazon-Geräte',
+				stepsTitle: 'Einrichtung',
+				steps: [
+					'Alexa-App auf dem Smartphone öffnen.',
+					'Mehr → Skills & Spiele → „Pills“ suchen.',
+					'Aktivieren.',
+					'Echo-Sprache auf Spanisch (Spanien) für es-ES-Formulierungen prüfen.',
+				],
+				phrasesTitle: 'Beispielformulierungen',
+				phrases: [
+					{ action: 'Was fällig ist', example: '„Alexa, sag Pills, welche Pillen ich nehmen muss"' },
+					{ action: 'Einnahme markieren', example: '„Alexa, sag Pills, dass ich die Pille genommen habe"' },
+					{ action: 'Überspringen', example: '„Alexa, sag Pills, die Einnahme zu überspringen"' },
+					{ action: 'Skill öffnen', example: '„Alexa, öffne Pills"' },
+				],
+				limitNote:
+					'Alexa kann Medikamente auf dem Handy nicht lesen (lokale Privatsphäre). Der Skill verweist auf Siri, Google Assistant oder das Öffnen von Pills auf dem Telefon.',
+			},
 		],
 	},
 	platforms: {

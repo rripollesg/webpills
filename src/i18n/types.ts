@@ -75,7 +75,26 @@ export type UI = {
 		eyebrow: string;
 		title: string;
 		description: string;
-		items: { label: string; phrase: string }[];
+		requirementsTitle: string;
+		requirements: string[];
+		actionsTitle: string;
+		actionsColAction: string;
+		actionsColLink: string;
+		actions: { name: string; link: string; effect: string }[];
+		setupTitle: string;
+		assistants: {
+			id: 'siri' | 'google' | 'alexa';
+			name: string;
+			platform: string;
+			stepsTitle: string;
+			steps: string[];
+			phrasesTitle: string;
+			phrases: { action: string; example: string }[];
+			altTitle?: string;
+			altSteps?: string[];
+			tip?: string;
+			limitNote?: string;
+		}[];
 	};
 	platforms: {
 		eyebrow: string;

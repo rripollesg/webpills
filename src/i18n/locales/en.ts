@@ -209,10 +209,113 @@ export const en: UI = {
 		title: 'Ask and mark doses without touching your phone',
 		description:
 			'Works with Siri, Google Assistant and Alexa via secure deep links that open Pills and read your local database.',
-		items: [
-			{ label: 'Siri', phrase: '"What pills do I take in Pills?"' },
-			{ label: 'Google Assistant', phrase: '"Mark dose in Pills"' },
-			{ label: 'Alexa', phrase: '"Tell Pills to skip the dose"' },
+		requirementsTitle: 'Before you start',
+		requirements: [
+			'Pills installed and opened at least once (profile created and medication added).',
+			'Doses scheduled for today on the active device profile.',
+			'Voice actions always use the active profile.',
+		],
+		actionsTitle: 'Available actions',
+		actionsColAction: 'Action',
+		actionsColLink: 'Deep link',
+		actions: [
+			{
+				name: 'What pills are due',
+				link: 'pills://dose/upcoming',
+				effect: 'Reads today’s pending doses aloud',
+			},
+			{
+				name: 'Mark dose taken',
+				link: 'pills://dose/taken',
+				effect: 'Marks the next pending dose for today',
+			},
+			{
+				name: 'Skip dose',
+				link: 'pills://dose/skipped',
+				effect: 'Skips the next pending dose for today',
+			},
+			{
+				name: 'Open reminders',
+				link: 'pills://reminders',
+				effect: 'Opens the reminders schedule',
+			},
+		],
+		setupTitle: 'How to set it up',
+		assistants: [
+			{
+				id: 'siri',
+				name: 'Siri',
+				platform: 'iPhone / iPad (iOS 16+)',
+				stepsTitle: 'Setup',
+				steps: [
+					'Install Pills from the App Store and open it at least once.',
+					'Go to Settings → Siri & Search → Pills and confirm Siri can use the app.',
+					'(Optional) Open Shortcuts → App Shortcuts → Pills to pin commands on the Home Screen.',
+				],
+				phrasesTitle: 'Example phrases',
+				phrases: [
+					{ action: 'What’s due', example: '"What pills do I need in Pills"' },
+					{ action: 'Mark dose', example: '"Mark dose taken in Pills"' },
+					{ action: 'Skip dose', example: '"Skip dose in Pills"' },
+					{ action: 'Reminders', example: '"Open reminders in Pills"' },
+					{ action: 'Appointments', example: '"Open appointments in Pills"' },
+				],
+				altTitle: 'Manual shortcut (alternative)',
+				altSteps: [
+					'Shortcuts app → + → Open URL.',
+					'URL: pills://dose/upcoming (or pills://dose/taken, pills://reminders…).',
+					'Name it ("What’s due") and trigger it with Siri or a widget.',
+				],
+				tip: 'Spanish phrases also work: «Qué pastillas me tocan en Pills», «Marcar toma en Pills»…',
+			},
+			{
+				id: 'google',
+				name: 'Google Assistant',
+				platform: 'Android',
+				stepsTitle: 'Setup',
+				steps: [
+					'Install Pills (Play Store or APK) and open it at least once.',
+					'Confirm Google is the default assistant (Settings → Apps → Default digital assistant).',
+					'Keep the Assistant language in Spanish or English.',
+					'(Optional) Long-press the Pills icon → quick shortcuts ("What’s due", "Mark dose"…).',
+				],
+				phrasesTitle: 'Example phrases',
+				phrases: [
+					{ action: 'What’s due', example: '"What pills do I need in Pills"' },
+					{ action: 'Mark dose', example: '"Mark dose in Pills"' },
+					{ action: 'Skip dose', example: '"Skip dose in Pills"' },
+					{ action: 'Reminders', example: '"Open reminders in Pills"' },
+				],
+				altTitle: 'Google Home routine (reliable alternative)',
+				altSteps: [
+					'Google Home app → Automations → + → Custom voice phrase (e.g. "what pills are due").',
+					'Add action → Interact with apps → Open URL.',
+					'URL: pills://dose/upcoming. Saying the phrase opens Pills and reads pending doses.',
+				],
+				tip: 'Google may take a few hours to index shortcuts for a newly installed app. If it doesn’t respond, open Pills manually and try again the next day.',
+			},
+			{
+				id: 'alexa',
+				name: 'Alexa',
+				platform: 'Echo / Amazon devices',
+				stepsTitle: 'Setup',
+				steps: [
+					'Open the Alexa app on your phone.',
+					'More → Skills & Games → search for "Pills".',
+					'Tap Enable.',
+					'Confirm your Echo uses Spanish (Spain) for es-ES phrases.',
+				],
+				phrasesTitle: 'Example phrases',
+				phrases: [
+					{ action: 'What’s due', example: '"Alexa, tell Pills what pills I need"' },
+					{ action: 'Mark dose', example: '"Alexa, tell Pills I took my pill"' },
+					{ action: 'Skip dose', example: '"Alexa, tell Pills to skip the dose"' },
+					{ action: 'Reminders', example: '"Alexa, open reminders in Pills"' },
+					{ action: 'Open skill', example: '"Alexa, open Pills"' },
+				],
+				limitNote:
+					'Alexa cannot read medication stored on your phone (local privacy). The skill directs you to use Siri, Google Assistant or open Pills on your phone, where doses are listed and marked with voice.',
+			},
 		],
 	},
 	platforms: {
