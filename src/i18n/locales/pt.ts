@@ -352,6 +352,17 @@ export const pt: UI = {
 				answer:
 					'Sim. No Android e iOS o banco usa SQLCipher com chave no Keychain/Keystore. Os backups são locais e criptografados com senha.',
 			},
+			{
+				question: 'Quais links pills:// os comandos de voz usam?',
+				answer:
+					'O Pills abre o app por deep links seguros. Siri e Google Assistant usam-nos quando você diz as frases na seção Comandos de voz — sem configuração manual. Para um atalho personalizado (Atalhos no iOS ou rotina no Google Home), use estas URLs:',
+				links: [
+					{ label: 'Quais remédios tomar', url: 'pills://dose/upcoming' },
+					{ label: 'Marcar dose', url: 'pills://dose/taken' },
+					{ label: 'Pular dose', url: 'pills://dose/skipped' },
+					{ label: 'Abrir lembretes', url: 'pills://reminders' },
+				],
+			},
 		],
 	},
 	cta: {

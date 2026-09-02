@@ -7,7 +7,7 @@ export const site = {
 		creator: 'Serefor',
 	},
 	ogImage: '/favicon-192.png',
-	organizationUrl: 'https://www.serefor.com',
+	organizationUrl: 'https://serefor.com',
 } as const;
 
 export function absoluteUrl(path: string): string {
