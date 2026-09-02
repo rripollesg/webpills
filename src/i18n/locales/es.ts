@@ -209,10 +209,113 @@ export const es: UI = {
 		title: 'Pregunta y marca tus tomas sin tocar el móvil',
 		description:
 			'Compatible con Siri, Google Assistant y Alexa a través de deep links seguros que abren Pills y leen tu base de datos local.',
-		items: [
-			{ label: 'Siri', phrase: '«Qué pastillas me tocan en Pills»' },
-			{ label: 'Google Assistant', phrase: '«Marcar toma en Pills»' },
-			{ label: 'Alexa', phrase: '«Dile a Pills que omita la toma»' },
+		requirementsTitle: 'Antes de empezar',
+		requirements: [
+			'Pills instalada y abierta al menos una vez (perfil creado y medicación añadida).',
+			'Tomas programadas para hoy en el perfil activo del dispositivo.',
+			'Las acciones de voz usan siempre el perfil activo.',
+		],
+		actionsTitle: 'Acciones disponibles',
+		actionsColAction: 'Acción',
+		actionsColLink: 'Deep link',
+		actions: [
+			{
+				name: 'Qué pastillas me tocan',
+				link: 'pills://dose/upcoming',
+				effect: 'Lee en voz alta las tomas pendientes de hoy',
+			},
+			{
+				name: 'Marcar toma',
+				link: 'pills://dose/taken',
+				effect: 'Marca la próxima toma pendiente de hoy',
+			},
+			{
+				name: 'Omitir toma',
+				link: 'pills://dose/skipped',
+				effect: 'Omite la próxima toma pendiente de hoy',
+			},
+			{
+				name: 'Abrir recordatorios',
+				link: 'pills://reminders',
+				effect: 'Abre la agenda de recordatorios',
+			},
+		],
+		setupTitle: 'Cómo configurarlo',
+		assistants: [
+			{
+				id: 'siri',
+				name: 'Siri',
+				platform: 'iPhone / iPad (iOS 16+)',
+				stepsTitle: 'Configuración',
+				steps: [
+					'Instala Pills desde la App Store y ábrela al menos una vez.',
+					'Ve a Ajustes → Siri y búsqueda → Pills y comprueba que Siri puede usar la app.',
+					'(Opcional) Abre la app Atajos → Atajos de app → Pills para fijar comandos en la pantalla de inicio.',
+				],
+				phrasesTitle: 'Frases de ejemplo',
+				phrases: [
+					{ action: 'Qué me toca', example: '«Qué pastillas me tocan en Pills»' },
+					{ action: 'Marcar toma', example: '«Marcar toma en Pills» · «Ya me tomé la pastilla en Pills»' },
+					{ action: 'Omitir toma', example: '«Omitir toma en Pills»' },
+					{ action: 'Recordatorios', example: '«Abrir recordatorios en Pills»' },
+					{ action: 'Citas', example: '«Abrir citas en Pills» · «Mis citas médicas en Pills»' },
+				],
+				altTitle: 'Atajo manual (alternativa)',
+				altSteps: [
+					'App Atajos → + → Abrir URL.',
+					'URL: pills://dose/upcoming (o pills://dose/taken, pills://reminders…).',
+					'Ponle un nombre («Qué me toca») y actívalo con Siri o un widget.',
+				],
+				tip: 'También funcionan frases en inglés: «What pills do I need in Pills», «Mark dose taken in Pills»…',
+			},
+			{
+				id: 'google',
+				name: 'Google Assistant',
+				platform: 'Android',
+				stepsTitle: 'Configuración',
+				steps: [
+					'Instala Pills (Play Store o APK) y ábrela al menos una vez.',
+					'Comprueba que Google es el asistente por defecto (Ajustes → Apps → Asistente digital).',
+					'Mantén el idioma del Asistente en español o inglés.',
+					'(Opcional) Mantén pulsado el icono de Pills → atajos rápidos («Qué me toca», «Marcar toma»…).',
+				],
+				phrasesTitle: 'Frases de ejemplo',
+				phrases: [
+					{ action: 'Qué me toca', example: '«Qué pastillas me tocan en Pills» · «What pills do I need in Pills»' },
+					{ action: 'Marcar toma', example: '«Marcar toma en Pills» · «Ya me la he tomado en Pills»' },
+					{ action: 'Omitir toma', example: '«Omitir toma en Pills» · «Skip dose in Pills»' },
+					{ action: 'Recordatorios', example: '«Recordatorios en Pills» · «Open reminders in Pills»' },
+				],
+				altTitle: 'Rutina en Google Home (alternativa fiable)',
+				altSteps: [
+					'App Google Home → Automatizaciones → + → Frase de voz personalizada (p. ej. «qué pastillas me tocan»).',
+					'Añadir acción → Interactuar con apps → Abrir URL.',
+					'URL: pills://dose/upcoming. Al decir la frase, Pills leerá las tomas pendientes.',
+				],
+				tip: 'Google puede tardar unas horas en indexar los atajos de una app recién instalada. Si no responde, abre Pills manualmente y vuelve a intentarlo al día siguiente.',
+			},
+			{
+				id: 'alexa',
+				name: 'Alexa',
+				platform: 'Echo / dispositivos Amazon',
+				stepsTitle: 'Configuración',
+				steps: [
+					'Abre la app Alexa en el móvil.',
+					'Más → Skills y juegos → busca «Pills».',
+					'Pulsa Activar / Enable.',
+					'Comprueba que el Echo usa idioma español (España) para las frases del modelo es-ES.',
+				],
+				phrasesTitle: 'Frases de ejemplo',
+				phrases: [
+					{ action: 'Qué me toca', example: '«Alexa, dile a Pills qué pastillas me tocan»' },
+					{ action: 'Marcar toma', example: '«Alexa, dile a Pills que ya me tomé la pastilla»' },
+					{ action: 'Omitir toma', example: '«Alexa, dile a Pills que omita la toma»' },
+					{ action: 'Recordatorios', example: '«Alexa, abre recordatorios en Pills»' },
+					{ action: 'Abrir skill', example: '«Alexa, abre Pills»' },
+				],
+				limitNote:
+					'Alexa no puede leer la medicación guardada en tu móvil (privacidad local). La skill te indica usar Siri, Google Assistant o abrir Pills en el teléfono, donde sí se listan y marcan las tomas con voz.',
+			},
 		],
 	},
 	platforms: {

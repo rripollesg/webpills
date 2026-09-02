@@ -209,10 +209,111 @@ export const fr: UI = {
 		title: 'Interrogez et validez vos prises sans toucher le téléphone',
 		description:
 			'Compatible avec Siri, Google Assistant et Alexa via des liens profonds sécurisés qui ouvrent Pills et lisent votre base locale.',
-		items: [
-			{ label: 'Siri', phrase: '« Quels médicaments dois-je prendre dans Pills »' },
-			{ label: 'Google Assistant', phrase: '« Marquer une prise dans Pills »' },
-			{ label: 'Alexa', phrase: "« Dis à Pills d'omettre la prise »" },
+		requirementsTitle: 'Avant de commencer',
+		requirements: [
+			'Pills installée et ouverte au moins une fois (profil créé et médicaments ajoutés).',
+			'Prises programmées pour aujourd’hui sur le profil actif de l’appareil.',
+			'Les actions vocales utilisent toujours le profil actif.',
+		],
+		actionsTitle: 'Actions disponibles',
+		actionsColAction: 'Action',
+		actionsColLink: 'Lien profond',
+		actions: [
+			{
+				name: 'Quels médicaments prendre',
+				link: 'pills://dose/upcoming',
+				effect: 'Lit à voix haute les prises en attente du jour',
+			},
+			{
+				name: 'Marquer une prise',
+				link: 'pills://dose/taken',
+				effect: 'Marque la prochaine prise en attente du jour',
+			},
+			{
+				name: 'Omettre une prise',
+				link: 'pills://dose/skipped',
+				effect: 'Omet la prochaine prise en attente du jour',
+			},
+			{
+				name: 'Ouvrir les rappels',
+				link: 'pills://reminders',
+				effect: 'Ouvre l’agenda des rappels',
+			},
+		],
+		setupTitle: 'Comment configurer',
+		assistants: [
+			{
+				id: 'siri',
+				name: 'Siri',
+				platform: 'iPhone / iPad (iOS 16+)',
+				stepsTitle: 'Configuration',
+				steps: [
+					'Installez Pills depuis l’App Store et ouvrez-la au moins une fois.',
+					'Allez dans Réglages → Siri et recherche → Pills et vérifiez que Siri peut utiliser l’app.',
+					'(Optionnel) Ouvrez Raccourcis → Raccourcis d’app → Pills pour épingler des commandes.',
+				],
+				phrasesTitle: 'Exemples de phrases',
+				phrases: [
+					{ action: 'Quelles prises', example: '« Quels médicaments dois-je prendre dans Pills »' },
+					{ action: 'Marquer prise', example: '« Marquer une prise dans Pills »' },
+					{ action: 'Omettre prise', example: "« Dis à Pills d'omettre la prise »" },
+					{ action: 'Rappels', example: '« Ouvrir les rappels dans Pills »' },
+				],
+				altTitle: 'Raccourci manuel (alternative)',
+				altSteps: [
+					'App Raccourcis → + → Ouvrir URL.',
+					'URL : pills://dose/upcoming (ou pills://dose/taken, pills://reminders…).',
+					'Nommez-le et activez-le avec Siri ou un widget.',
+				],
+				tip: 'Les phrases en anglais fonctionnent aussi : « What pills do I need in Pills »…',
+			},
+			{
+				id: 'google',
+				name: 'Google Assistant',
+				platform: 'Android',
+				stepsTitle: 'Configuration',
+				steps: [
+					'Installez Pills (Play Store ou APK) et ouvrez-la au moins une fois.',
+					'Vérifiez que Google est l’assistant par défaut (Réglages → Apps → Assistant numérique).',
+					'Gardez la langue de l’Assistant en français ou en anglais.',
+					'(Optionnel) Appui long sur l’icône Pills → raccourcis rapides.',
+				],
+				phrasesTitle: 'Exemples de phrases',
+				phrases: [
+					{ action: 'Quelles prises', example: '« Quels médicaments dois-je prendre dans Pills »' },
+					{ action: 'Marquer prise', example: '« Marquer une prise dans Pills »' },
+					{ action: 'Omettre prise', example: "« Dis à Pills d'omettre la prise »" },
+					{ action: 'Rappels', example: '« Ouvrir les rappels dans Pills »' },
+				],
+				altTitle: 'Routine Google Home (alternative fiable)',
+				altSteps: [
+					'App Google Home → Automatisations → + → Phrase vocale personnalisée.',
+					'Ajouter une action → Interagir avec les apps → Ouvrir URL.',
+					'URL : pills://dose/upcoming.',
+				],
+				tip: 'Google peut mettre quelques heures à indexer les raccourcis d’une app nouvellement installée.',
+			},
+			{
+				id: 'alexa',
+				name: 'Alexa',
+				platform: 'Echo / appareils Amazon',
+				stepsTitle: 'Configuration',
+				steps: [
+					'Ouvrez l’app Alexa sur votre téléphone.',
+					'Plus → Skills et jeux → recherchez « Pills ».',
+					'Appuyez sur Activer.',
+					'Vérifiez que l’Echo utilise le français (Espagne) pour les phrases es-ES.',
+				],
+				phrasesTitle: 'Exemples de phrases',
+				phrases: [
+					{ action: 'Quelles prises', example: '« Alexa, dis à Pills quels médicaments je dois prendre »' },
+					{ action: 'Marquer prise', example: '« Alexa, dis à Pills que j’ai pris mon médicament »' },
+					{ action: 'Omettre prise', example: "« Alexa, dis à Pills d'omettre la prise »" },
+					{ action: 'Ouvrir skill', example: '« Alexa, ouvre Pills »' },
+				],
+				limitNote:
+					'Alexa ne peut pas lire les médicaments stockés sur votre téléphone (confidentialité locale). La skill vous oriente vers Siri, Google Assistant ou l’ouverture de Pills sur le téléphone.',
+			},
 		],
 	},
 	platforms: {

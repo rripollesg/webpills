@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { t } = Astro.props;
+const assistants = t.voice.assistants;
 ---
 
 <section id="voz" class="voice">
@@ -16,26 +17,130 @@ const { t } = Astro.props;
 			<p>{t.voice.description}</p>
 		</div>
 
-		<div class="cards">
-			{
-				t.voice.items.map((item) => (
-					<article class="card reveal">
-						<span class="mic-icon" aria-hidden="true">
-							<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-								<rect x="9.2" y="3.5" width="5.6" height="10" rx="2.8" stroke="currentColor" stroke-width="1.8" />
-								<path
-									d="M6.5 11.5a5.5 5.5 0 0 0 11 0M12 17v3.5M9.5 20.5h5"
-									stroke="currentColor"
-									stroke-width="1.8"
-									stroke-linecap="round"
-								/>
-							</svg>
-						</span>
-						<h3>{item.label}</h3>
-						<p>{item.phrase}</p>
-					</article>
-				))
-			}
+		<div class="voice-layout reveal">
+			<aside class="voice-sidebar">
+				<div class="panel">
+					<h3>{t.voice.requirementsTitle}</h3>
+					<ul>
+						{t.voice.requirements.map((item) => <li>{item}</li>)}
+					</ul>
+				</div>
+
+				<div class="panel">
+					<h3>{t.voice.actionsTitle}</h3>
+					<div class="actions-table-wrap">
+						<table class="actions-table">
+							<thead>
+								<tr>
+									<th scope="col">{t.voice.actionsColAction}</th>
+									<th scope="col">{t.voice.actionsColLink}</th>
+								</tr>
+							</thead>
+							<tbody>
+								{
+									t.voice.actions.map((action) => (
+										<tr>
+											<td>
+												<strong>{action.name}</strong>
+												<span>{action.effect}</span>
+											</td>
+											<td>
+												<code>{action.link}</code>
+											</td>
+										</tr>
+									))
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</aside>
+
+			<div class="voice-setup">
+				<h3 class="setup-heading">{t.voice.setupTitle}</h3>
+
+				<div class="tabs">
+					<div class="tab-nav">
+						{
+							assistants.map((assistant, index) => (
+								<div class="tab-nav-item">
+									<input
+										type="radio"
+										name="voice-assistant"
+										id={`voice-tab-${assistant.id}`}
+										class="tab-input"
+										checked={index === 0}
+									/>
+									<label for={`voice-tab-${assistant.id}`} class="tab-label">
+										{assistant.name}
+									</label>
+								</div>
+							))
+						}
+					</div>
+
+					<div class="tab-panels">
+						{
+							assistants.map((assistant) => (
+								<article class="tab-panel" data-assistant={assistant.id}>
+									<header class="assistant-head">
+										<span class="mic-icon" aria-hidden="true">
+											<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+												<rect x="9.2" y="3.5" width="5.6" height="10" rx="2.8" stroke="currentColor" stroke-width="1.8" />
+												<path
+													d="M6.5 11.5a5.5 5.5 0 0 0 11 0M12 17v3.5M9.5 20.5h5"
+													stroke="currentColor"
+													stroke-width="1.8"
+													stroke-linecap="round"
+												/>
+											</svg>
+										</span>
+										<div>
+											<h4>{assistant.name}</h4>
+											<p>{assistant.platform}</p>
+										</div>
+									</header>
+
+									<div class="setup-block">
+										<h5>{assistant.stepsTitle}</h5>
+										<ol>
+											{assistant.steps.map((step) => <li>{step}</li>)}
+										</ol>
+									</div>
+
+									<div class="setup-block">
+										<h5>{assistant.phrasesTitle}</h5>
+										<ul class="phrase-list">
+											{
+												assistant.phrases.map((phrase) => (
+													<li>
+														<span class="phrase-action">{phrase.action}</span>
+														<span class="phrase-example">{phrase.example}</span>
+													</li>
+												))
+											}
+										</ul>
+									</div>
+
+									{
+										assistant.altTitle && assistant.altSteps && (
+											<div class="setup-block alt-block">
+												<h5>{assistant.altTitle}</h5>
+												<ol>
+													{assistant.altSteps.map((step) => <li>{step}</li>)}
+												</ol>
+											</div>
+										)
+									}
+
+									{assistant.tip && <p class="tip">{assistant.tip}</p>}
+									{assistant.limitNote && <p class="limit-note">{assistant.limitNote}</p>}
+								</article>
+							))
+						}
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
@@ -55,7 +160,9 @@ const { t } = Astro.props;
 	}
 
 	.voice h2,
-	.voice h3 {
+	.voice h3,
+	.voice h4,
+	.voice h5 {
 		color: #fff;
 	}
 
@@ -63,21 +170,156 @@ const { t } = Astro.props;
 		color: rgba(232, 241, 244, 0.75);
 	}
 
-	.cards {
+	.voice-layout {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 16px;
-		max-width: 900px;
-		margin: 0 auto;
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+		gap: 24px;
+		align-items: start;
+		margin-top: 40px;
 	}
 
-	.card {
-		text-align: center;
-		padding: 28px 20px;
+	.voice-sidebar {
+		display: grid;
+		gap: 16px;
+	}
+
+	.panel {
+		padding: 22px;
 		border-radius: var(--radius-md);
 		border: 1px solid rgba(255, 255, 255, 0.12);
 		background: rgba(255, 255, 255, 0.04);
-		backdrop-filter: blur(8px);
+	}
+
+	.panel h3 {
+		font-size: 15px;
+		margin-bottom: 12px;
+	}
+
+	.panel ul {
+		margin: 0;
+		padding-left: 18px;
+		color: rgba(232, 241, 244, 0.72);
+		font-size: 14px;
+		line-height: 1.55;
+	}
+
+	.panel li + li {
+		margin-top: 8px;
+	}
+
+	.actions-table-wrap {
+		overflow-x: auto;
+	}
+
+	.actions-table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 13px;
+	}
+
+	.actions-table th {
+		text-align: left;
+		color: rgba(232, 241, 244, 0.55);
+		font-weight: 600;
+		font-size: 11px;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		padding-bottom: 10px;
+	}
+
+	.actions-table td {
+		padding: 10px 0;
+		border-top: 1px solid rgba(255, 255, 255, 0.08);
+		vertical-align: top;
+	}
+
+	.actions-table td strong {
+		display: block;
+		color: #fff;
+		font-size: 13px;
+		margin-bottom: 4px;
+	}
+
+	.actions-table td span {
+		display: block;
+		color: rgba(232, 241, 244, 0.6);
+		font-size: 12px;
+		line-height: 1.45;
+	}
+
+	.actions-table code {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		color: var(--mint);
+		word-break: break-all;
+	}
+
+	.setup-heading {
+		font-size: 18px;
+		margin-bottom: 16px;
+	}
+
+	.tabs {
+		border-radius: var(--radius-md);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		background: rgba(255, 255, 255, 0.03);
+		overflow: hidden;
+	}
+
+	.tab-nav {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		background: rgba(0, 0, 0, 0.15);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+	}
+
+	.tab-nav-item {
+		position: relative;
+	}
+
+	.tab-input {
+		position: absolute;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.tab-label {
+		display: block;
+		padding: 14px 12px;
+		text-align: center;
+		font-size: 14px;
+		font-weight: 700;
+		color: rgba(232, 241, 244, 0.65);
+		cursor: pointer;
+		transition: color 0.2s, background 0.2s;
+	}
+
+	.tab-label:hover {
+		color: #fff;
+	}
+
+	.tab-input:checked + .tab-label {
+		color: var(--mint);
+		background: rgba(125, 255, 240, 0.08);
+		box-shadow: inset 0 -2px 0 var(--mint);
+	}
+
+	.tab-panel {
+		display: none;
+		padding: 24px;
+	}
+
+	.tabs:has(#voice-tab-siri:checked) [data-assistant='siri'],
+	.tabs:has(#voice-tab-google:checked) [data-assistant='google'],
+	.tabs:has(#voice-tab-alexa:checked) [data-assistant='alexa'] {
+		display: block;
+	}
+
+	.assistant-head {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		margin-bottom: 22px;
 	}
 
 	.mic-icon {
@@ -88,24 +330,112 @@ const { t } = Astro.props;
 		border-radius: 14px;
 		background: rgba(125, 255, 240, 0.12);
 		color: var(--mint);
-		margin-bottom: 14px;
+		flex-shrink: 0;
 	}
 
-	.card h3 {
-		font-size: 15px;
-		margin-bottom: 8px;
+	.assistant-head h4 {
+		font-size: 17px;
+		margin-bottom: 4px;
 	}
 
-	.card p {
+	.assistant-head p {
+		margin: 0;
+		font-size: 13px;
+		color: rgba(232, 241, 244, 0.6);
+	}
+
+	.setup-block + .setup-block {
+		margin-top: 20px;
+	}
+
+	.setup-block h5 {
+		font-size: 13px;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: rgba(232, 241, 244, 0.55);
+		margin-bottom: 10px;
+	}
+
+	.setup-block ol {
+		margin: 0;
+		padding-left: 20px;
+		color: rgba(232, 241, 244, 0.78);
 		font-size: 14px;
-		color: rgba(232, 241, 244, 0.65);
-		line-height: 1.5;
-		font-style: italic;
+		line-height: 1.55;
 	}
 
-	@media (max-width: 720px) {
-		.cards {
+	.setup-block ol li + li {
+		margin-top: 8px;
+	}
+
+	.alt-block {
+		padding-top: 18px;
+		border-top: 1px solid rgba(255, 255, 255, 0.08);
+	}
+
+	.phrase-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 10px;
+	}
+
+	.phrase-list li {
+		padding: 12px 14px;
+		border-radius: var(--radius-sm);
+		background: rgba(0, 0, 0, 0.18);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+	}
+
+	.phrase-action {
+		display: block;
+		font-size: 12px;
+		font-weight: 700;
+		color: var(--mint);
+		margin-bottom: 4px;
+	}
+
+	.phrase-example {
+		display: block;
+		font-size: 14px;
+		color: rgba(232, 241, 244, 0.78);
+		font-style: italic;
+		line-height: 1.45;
+	}
+
+	.tip {
+		margin: 18px 0 0;
+		padding: 12px 14px;
+		border-radius: var(--radius-sm);
+		background: rgba(125, 255, 240, 0.08);
+		border: 1px solid rgba(125, 255, 240, 0.18);
+		color: rgba(232, 241, 244, 0.82);
+		font-size: 13px;
+		line-height: 1.5;
+	}
+
+	.limit-note {
+		margin: 18px 0 0;
+		padding: 12px 14px;
+		border-radius: var(--radius-sm);
+		background: rgba(212, 83, 74, 0.1);
+		border: 1px solid rgba(212, 83, 74, 0.22);
+		color: rgba(255, 220, 216, 0.9);
+		font-size: 13px;
+		line-height: 1.5;
+	}
+
+	@media (max-width: 900px) {
+		.voice-layout {
 			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.tab-label {
+			padding: 12px 8px;
+			font-size: 13px;
 		}
 	}
 </style>

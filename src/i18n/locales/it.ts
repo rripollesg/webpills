@@ -209,10 +209,111 @@ export const it: UI = {
 		title: 'Chiedi e segna le assunzioni senza toccare il telefono',
 		description:
 			'Compatibile con Siri, Google Assistant e Alexa tramite deep link sicuri che aprono Pills e leggono il database locale.',
-		items: [
-			{ label: 'Siri', phrase: '«Quali farmaci devo prendere in Pills»' },
-			{ label: 'Google Assistant', phrase: '«Segna assunzione in Pills»' },
-			{ label: 'Alexa', phrase: '«Dì a Pills di saltare l\'assunzione»' },
+		requirementsTitle: 'Prima di iniziare',
+		requirements: [
+			'Pills installata e aperta almeno una volta (profilo creato e farmaci aggiunti).',
+			'Assunzioni programmate per oggi sul profilo attivo del dispositivo.',
+			'Le azioni vocali usano sempre il profilo attivo.',
+		],
+		actionsTitle: 'Azioni disponibili',
+		actionsColAction: 'Azione',
+		actionsColLink: 'Deep link',
+		actions: [
+			{
+				name: 'Quali farmaci assumere',
+				link: 'pills://dose/upcoming',
+				effect: 'Legge ad alta voce le assunzioni in sospeso di oggi',
+			},
+			{
+				name: 'Segna assunzione',
+				link: 'pills://dose/taken',
+				effect: 'Segna la prossima assunzione in sospeso di oggi',
+			},
+			{
+				name: 'Salta assunzione',
+				link: 'pills://dose/skipped',
+				effect: 'Salta la prossima assunzione in sospeso di oggi',
+			},
+			{
+				name: 'Apri promemoria',
+				link: 'pills://reminders',
+				effect: 'Apre l’agenda dei promemoria',
+			},
+		],
+		setupTitle: 'Come configurarlo',
+		assistants: [
+			{
+				id: 'siri',
+				name: 'Siri',
+				platform: 'iPhone / iPad (iOS 16+)',
+				stepsTitle: 'Configurazione',
+				steps: [
+					'Installa Pills dall’App Store e aprila almeno una volta.',
+					'Vai in Impostazioni → Siri e ricerca → Pills e verifica l’accesso di Siri.',
+					'(Opzionale) App Comandi → Comandi app → Pills per fissare i comandi.',
+				],
+				phrasesTitle: 'Frasi di esempio',
+				phrases: [
+					{ action: 'Cosa assumere', example: '«Quali farmaci devo prendere in Pills»' },
+					{ action: 'Segna assunzione', example: '«Segna assunzione in Pills»' },
+					{ action: 'Salta assunzione', example: '«Dì a Pills di saltare l\'assunzione»' },
+					{ action: 'Promemoria', example: '«Apri promemoria in Pills»' },
+				],
+				altTitle: 'Comando manuale (alternativa)',
+				altSteps: [
+					'App Comandi → + → Apri URL.',
+					'URL: pills://dose/upcoming (o pills://dose/taken…).',
+					'Dagli un nome e attivalo con Siri o un widget.',
+				],
+				tip: 'Funzionano anche frasi in inglese e spagnolo.',
+			},
+			{
+				id: 'google',
+				name: 'Google Assistant',
+				platform: 'Android',
+				stepsTitle: 'Configurazione',
+				steps: [
+					'Installa Pills (Play Store o APK) e aprila almeno una volta.',
+					'Verifica che Google sia l’assistente predefinito (Impostazioni → App).',
+					'Mantieni la lingua dell’Assistente in italiano, spagnolo o inglese.',
+					'(Opzionale) Tieni premuta l’icona di Pills → scorciatoie rapide.',
+				],
+				phrasesTitle: 'Frasi di esempio',
+				phrases: [
+					{ action: 'Cosa assumere', example: '«Quali farmaci devo prendere in Pills»' },
+					{ action: 'Segna assunzione', example: '«Segna assunzione in Pills»' },
+					{ action: 'Salta assunzione', example: '«Salta assunzione in Pills»' },
+					{ action: 'Promemoria', example: '«Apri promemoria in Pills»' },
+				],
+				altTitle: 'Routine Google Home (alternativa affidabile)',
+				altSteps: [
+					'App Google Home → Automazioni → + → Frase vocale personalizzata.',
+					'Aggiungi azione → Interagisci con le app → Apri URL.',
+					'URL: pills://dose/upcoming.',
+				],
+				tip: 'Google può impiegare alcune ore per indicizzare le scorciatoie di un’app appena installata.',
+			},
+			{
+				id: 'alexa',
+				name: 'Alexa',
+				platform: 'Echo / dispositivi Amazon',
+				stepsTitle: 'Configurazione',
+				steps: [
+					'Apri l’app Alexa sul telefono.',
+					'Altro → Skill e giochi → cerca «Pills».',
+					'Tocca Attiva.',
+					'Verifica che l’Echo usi lo spagnolo (Spagna) per le frasi es-ES.',
+				],
+				phrasesTitle: 'Frasi di esempio',
+				phrases: [
+					{ action: 'Cosa assumere', example: '«Alexa, chiedi a Pills quali farmaci devo prendere»' },
+					{ action: 'Segna assunzione', example: '«Alexa, dì a Pills che ho preso la pillola»' },
+					{ action: 'Salta assunzione', example: '«Alexa, dì a Pills di saltare l\'assunzione»' },
+					{ action: 'Apri skill', example: '«Alexa, apri Pills»' },
+				],
+				limitNote:
+					'Alexa non può leggere i farmaci salvati sul telefono (privacy locale). La skill indica di usare Siri, Google Assistant o aprire Pills sul telefono.',
+			},
 		],
 	},
 	platforms: {

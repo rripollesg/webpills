@@ -209,10 +209,111 @@ export const pt: UI = {
 		title: 'Pergunte e marque doses sem tocar no celular',
 		description:
 			'Compatível com Siri, Google Assistant e Alexa por deep links seguros que abrem o Pills e leem seu banco de dados local.',
-		items: [
-			{ label: 'Siri', phrase: '«Quais remédios devo tomar no Pills»' },
-			{ label: 'Google Assistant', phrase: '«Marcar dose no Pills»' },
-			{ label: 'Alexa', phrase: '«Diga ao Pills para pular a dose»' },
+		requirementsTitle: 'Antes de começar',
+		requirements: [
+			'Pills instalado e aberto pelo menos uma vez (perfil criado e medicamentos adicionados).',
+			'Doses programadas para hoje no perfil ativo do dispositivo.',
+			'As ações de voz usam sempre o perfil ativo.',
+		],
+		actionsTitle: 'Ações disponíveis',
+		actionsColAction: 'Ação',
+		actionsColLink: 'Deep link',
+		actions: [
+			{
+				name: 'Quais remédios tomar',
+				link: 'pills://dose/upcoming',
+				effect: 'Lê em voz alta as doses pendentes de hoje',
+			},
+			{
+				name: 'Marcar dose',
+				link: 'pills://dose/taken',
+				effect: 'Marca a próxima dose pendente de hoje',
+			},
+			{
+				name: 'Pular dose',
+				link: 'pills://dose/skipped',
+				effect: 'Pula a próxima dose pendente de hoje',
+			},
+			{
+				name: 'Abrir lembretes',
+				link: 'pills://reminders',
+				effect: 'Abre a agenda de lembretes',
+			},
+		],
+		setupTitle: 'Como configurar',
+		assistants: [
+			{
+				id: 'siri',
+				name: 'Siri',
+				platform: 'iPhone / iPad (iOS 16+)',
+				stepsTitle: 'Configuração',
+				steps: [
+					'Instale o Pills na App Store e abra pelo menos uma vez.',
+					'Vá em Ajustes → Siri e busca → Pills e confirme o acesso da Siri.',
+					'(Opcional) App Atalhos → Atalhos de app → Pills para fixar comandos.',
+				],
+				phrasesTitle: 'Frases de exemplo',
+				phrases: [
+					{ action: 'O que tomar', example: '«Quais remédios devo tomar no Pills»' },
+					{ action: 'Marcar dose', example: '«Marcar dose no Pills»' },
+					{ action: 'Pular dose', example: '«Diga ao Pills para pular a dose»' },
+					{ action: 'Lembretes', example: '«Abrir lembretes no Pills»' },
+				],
+				altTitle: 'Atalho manual (alternativa)',
+				altSteps: [
+					'App Atalhos → + → Abrir URL.',
+					'URL: pills://dose/upcoming (ou pills://dose/taken…).',
+					'Dê um nome e ative com Siri ou um widget.',
+				],
+				tip: 'Frases em inglês e espanhol também funcionam.',
+			},
+			{
+				id: 'google',
+				name: 'Google Assistant',
+				platform: 'Android',
+				stepsTitle: 'Configuração',
+				steps: [
+					'Instale o Pills (Play Store ou APK) e abra pelo menos uma vez.',
+					'Confirme que o Google é o assistente padrão (Ajustes → Apps).',
+					'Mantenha o idioma do Assistente em português, espanhol ou inglês.',
+					'(Opcional) Toque longo no ícone do Pills → atalhos rápidos.',
+				],
+				phrasesTitle: 'Frases de exemplo',
+				phrases: [
+					{ action: 'O que tomar', example: '«Quais remédios devo tomar no Pills»' },
+					{ action: 'Marcar dose', example: '«Marcar dose no Pills»' },
+					{ action: 'Pular dose', example: '«Pular dose no Pills»' },
+					{ action: 'Lembretes', example: '«Abrir lembretes no Pills»' },
+				],
+				altTitle: 'Rotina no Google Home (alternativa confiável)',
+				altSteps: [
+					'App Google Home → Automações → + → Frase de voz personalizada.',
+					'Adicionar ação → Interagir com apps → Abrir URL.',
+					'URL: pills://dose/upcoming.',
+				],
+				tip: 'O Google pode levar algumas horas para indexar atalhos de um app recém-instalado.',
+			},
+			{
+				id: 'alexa',
+				name: 'Alexa',
+				platform: 'Echo / dispositivos Amazon',
+				stepsTitle: 'Configuração',
+				steps: [
+					'Abra o app Alexa no celular.',
+					'Mais → Skills e jogos → busque «Pills».',
+					'Toque em Ativar.',
+					'Confirme que o Echo usa espanhol (Espanha) para frases es-ES.',
+				],
+				phrasesTitle: 'Frases de exemplo',
+				phrases: [
+					{ action: 'O que tomar', example: '«Alexa, diga ao Pills quais remédios devo tomar»' },
+					{ action: 'Marcar dose', example: '«Alexa, diga ao Pills que tomei o remédio»' },
+					{ action: 'Pular dose', example: '«Alexa, diga ao Pills para pular a dose»' },
+					{ action: 'Abrir skill', example: '«Alexa, abra Pills»' },
+				],
+				limitNote:
+					'A Alexa não pode ler medicamentos salvos no celular (privacidade local). A skill orienta usar Siri, Google Assistant ou abrir o Pills no telefone.',
+			},
 		],
 	},
 	platforms: {
