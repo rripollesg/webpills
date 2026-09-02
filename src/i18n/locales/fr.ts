@@ -109,7 +109,7 @@ export const fr: UI = {
 				icon: 'tv',
 				title: 'Pills TV',
 				description:
-					'Companion sur Android TV / Fire TV / tablette en Wi‑Fi local, appairage par code ou QR.',
+					'Complément sur Android TV / Fire TV / tablette en Wi‑Fi local, appairage par code ou QR.',
 			},
 		],
 	},
@@ -209,14 +209,6 @@ export const fr: UI = {
 		title: 'Interrogez et validez vos prises sans toucher le téléphone',
 		description: 'Compatible avec Siri, Google Assistant et Alexa. Les données sont lues sur votre appareil.',
 		hint: 'Ouvrez Pills au moins une fois, avec médicaments et prises du jour sur le profil actif.',
-		moreLabel: 'Voir plus de détails',
-		actionsTitle: 'Liens profonds',
-		actions: [
-			{ name: 'Quelles prises', link: 'pills://dose/upcoming' },
-			{ name: 'Marquer prise', link: 'pills://dose/taken' },
-			{ name: 'Omettre prise', link: 'pills://dose/skipped' },
-			{ name: 'Rappels', link: 'pills://reminders' },
-		],
 		assistants: [
 			{
 				id: 'siri',
@@ -225,17 +217,12 @@ export const fr: UI = {
 				steps: [
 					'Installez Pills et ouvrez-la une fois.',
 					'Réglages → Siri et recherche → Pills.',
-					'Dites la phrase ou épinglez-la dans Raccourcis.',
+					"Dites l'une des phrases ci-dessous.",
 				],
 				phrases: [
 					'« Quels médicaments dois-je prendre dans Pills »',
 					'« Marquer une prise dans Pills »',
 					'« Omettre une prise dans Pills »',
-				],
-				altTitle: 'Raccourci manuel',
-				altSteps: [
-					'Raccourcis → + → Ouvrir URL → pills://dose/upcoming.',
-					'Nommez-le et activez-le avec Siri.',
 				],
 			},
 			{
@@ -245,17 +232,12 @@ export const fr: UI = {
 				steps: [
 					'Installez Pills et ouvrez-la une fois.',
 					'Utilisez Google comme assistant par défaut.',
-					'Dites « Ok Google » + la phrase (indexation possible en quelques heures).',
+					"Dites « Ok Google » + l'une des phrases ci-dessous.",
 				],
 				phrases: [
 					'« Quels médicaments dois-je prendre dans Pills »',
 					'« Marquer une prise dans Pills »',
 					'« Omettre une prise dans Pills »',
-				],
-				altTitle: 'Routine Google Home',
-				altSteps: [
-					'Google Home → Automatisations → phrase personnalisée.',
-					'Action → Ouvrir URL → pills://dose/upcoming.',
 				],
 			},
 			{
@@ -293,7 +275,7 @@ export const fr: UI = {
 				icon: 'tv',
 				title: 'Pills TV',
 				description:
-					'Companion pour Android TV, Fire TV ou tablette, synchronisée en Wi‑Fi local.',
+					'Complément pour Android TV, Fire TV ou tablette, synchronisé en Wi‑Fi local.',
 			},
 		],
 	},

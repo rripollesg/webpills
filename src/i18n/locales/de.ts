@@ -109,7 +109,7 @@ export const de: UI = {
 				icon: 'tv',
 				title: 'Pills TV',
 				description:
-					'Companion für Android TV / Fire TV / Tablet über lokales WLAN, Kopplung per Code oder QR.',
+					'Ergänzung für Android TV / Fire TV / Tablet über lokales WLAN, Kopplung per Code oder QR.',
 			},
 		],
 	},
@@ -209,14 +209,6 @@ export const de: UI = {
 		title: 'Abfragen und markieren ohne das Handy zu berühren',
 		description: 'Kompatibel mit Siri, Google Assistant und Alexa. Daten werden auf dem Gerät gelesen.',
 		hint: 'Öffnen Sie Pills mindestens einmal, mit Medikamenten und heutigen Einnahmen im aktiven Profil.',
-		moreLabel: 'Mehr Details anzeigen',
-		actionsTitle: 'Deep Links',
-		actions: [
-			{ name: 'Was fällig ist', link: 'pills://dose/upcoming' },
-			{ name: 'Einnahme markieren', link: 'pills://dose/taken' },
-			{ name: 'Überspringen', link: 'pills://dose/skipped' },
-			{ name: 'Erinnerungen', link: 'pills://reminders' },
-		],
 		assistants: [
 			{
 				id: 'siri',
@@ -225,17 +217,12 @@ export const de: UI = {
 				steps: [
 					'Pills installieren und einmal öffnen.',
 					'Einstellungen → Siri & Suchen → Pills.',
-					'Phrase sagen oder in Kurzbefehlen anheften.',
+					'Sagen Sie eine der Phrasen unten.',
 				],
 				phrases: [
 					'„Welche Pillen muss ich in Pills nehmen?“',
 					'„Einnahme in Pills markieren“',
 					'„Einnahme in Pills überspringen“',
-				],
-				altTitle: 'Manueller Kurzbefehl',
-				altSteps: [
-					'Kurzbefehle → + → URL öffnen → pills://dose/upcoming.',
-					'Benennen und mit Siri auslösen.',
 				],
 			},
 			{
@@ -245,17 +232,12 @@ export const de: UI = {
 				steps: [
 					'Pills installieren und einmal öffnen.',
 					'Google als Standard-Assistent festlegen.',
-					'„Ok Google“ + Phrase sagen (Indexierung kann Stunden dauern).',
+					'Sagen Sie „Ok Google“ + eine der Phrasen unten.',
 				],
 				phrases: [
 					'„Welche Pillen muss ich in Pills nehmen?“',
 					'„Einnahme in Pills markieren“',
 					'„Einnahme in Pills überspringen“',
-				],
-				altTitle: 'Google-Home-Routine',
-				altSteps: [
-					'Google Home → Automatisierungen → eigene Sprachphrase.',
-					'Aktion → URL öffnen → pills://dose/upcoming.',
 				],
 			},
 			{
@@ -293,7 +275,7 @@ export const de: UI = {
 				icon: 'tv',
 				title: 'Pills TV',
 				description:
-					'Companion für Android TV, Fire TV oder Tablet, synchronisiert über lokales WLAN.',
+					'Ergänzung für Android TV, Fire TV oder Tablet, synchronisiert über lokales WLAN.',
 			},
 		],
 	},

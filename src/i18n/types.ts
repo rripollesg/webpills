@@ -76,17 +76,12 @@ export type UI = {
 		title: string;
 		description: string;
 		hint: string;
-		moreLabel: string;
-		actionsTitle: string;
-		actions: { name: string; link: string }[];
 		assistants: {
 			id: 'siri' | 'google' | 'alexa';
 			name: string;
 			platform: string;
 			steps: string[];
 			phrases: string[];
-			altTitle?: string;
-			altSteps?: string[];
 			limitNote?: string;
 		}[];
 	};
