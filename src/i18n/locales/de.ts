@@ -33,7 +33,7 @@ export const de: UI = {
 	stats: {
 		items: [
 			{ value: 'TV', label: 'Erinnerungen & Pills TV' },
-			{ value: '6', label: 'Oberflächensprachen' },
+			{ value: '7', label: 'Oberflächensprachen' },
 			{ value: '6+', label: 'Hinzufügbare Vitalwerte' },
 			{ value: 'AES-256', label: 'Verschlüsselte Backups' },
 		],
@@ -97,7 +97,7 @@ export const de: UI = {
 				icon: 'mic',
 				title: 'Sprachbefehle',
 				description:
-					'Fragen Sie nach fälligen Dosen oder markieren Sie eine Einnahme mit Siri, Google Assistant oder Alexa.',
+					'Fragen Sie nach fälligen Dosen oder markieren Sie eine Einnahme mit Siri oder Google Assistant.',
 			},
 			{
 				icon: 'users',
@@ -207,7 +207,7 @@ export const de: UI = {
 	voice: {
 		eyebrow: 'Sprachbefehle',
 		title: 'Abfragen und markieren ohne das Handy zu berühren',
-		description: 'Kompatibel mit Siri, Google Assistant und Alexa. Daten werden auf dem Gerät gelesen.',
+		description: 'Kompatibel mit Siri und Google Assistant. Daten werden auf dem Gerät gelesen.',
 		hint: 'Öffnen Sie Pills mindestens einmal, mit Medikamenten und heutigen Einnahmen im aktiven Profil.',
 		assistants: [
 			{
@@ -239,24 +239,7 @@ export const de: UI = {
 					'„Einnahme in Pills markieren“',
 					'„Einnahme in Pills überspringen“',
 				],
-			},
-			{
-				id: 'alexa',
-				name: 'Alexa',
-				platform: 'Echo / Amazon',
-				steps: [
-					'Alexa-App → Skills → „Pills“ suchen → Aktivieren.',
-					'Echo auf Spanisch (Spanien) für es-ES-Phrasen.',
-					'„Alexa, öffne Pills“ oder eine Phrase unten sagen.',
-				],
-				phrases: [
-					'„Alexa, sag Pills, welche Pillen ich nehmen muss“',
-					'„Alexa, sag Pills, dass ich die Pille genommen habe“',
-					'„Alexa, sag Pills, die Einnahme zu überspringen“',
-				],
-				limitNote:
-					'Alexa liest keine lokalen Medikamente. Zum Listen oder Markieren Siri, Google oder Pills auf dem Handy nutzen.',
-			},
+			}
 		],
 	},
 	platforms: {
@@ -330,7 +313,7 @@ export const de: UI = {
 			{
 				question: 'Muss ich ein Konto erstellen?',
 				answer:
-					'Nein. Pills ist für den Betrieb ohne Pflicht-Cloud-Konto konzipiert. Ihre Daten bleiben auf dem Gerät.',
+					'Pills ist für den Betrieb ohne Cloud-Konto konzipiert. Ihre Daten bleiben auf dem Gerät.',
 			},
 			{
 				question: 'Ersetzt Pills meinen Arzt?',

@@ -33,7 +33,7 @@ export const fr: UI = {
 	stats: {
 		items: [
 			{ value: 'TV', label: 'Notifications et Pills TV' },
-			{ value: '6', label: "Langues d'interface" },
+			{ value: '7', label: "Langues d'interface" },
 			{ value: '6+', label: 'Constantes ajoutables' },
 			{ value: 'AES-256', label: 'Sauvegardes chiffrées' },
 		],
@@ -97,7 +97,7 @@ export const fr: UI = {
 				icon: 'mic',
 				title: 'Commandes vocales',
 				description:
-					'Demandez quels médicaments prendre ou validez une prise avec Siri, Google Assistant ou Alexa.',
+					'Demandez quels médicaments prendre ou validez une prise avec Siri ou Google Assistant.',
 			},
 			{
 				icon: 'users',
@@ -207,7 +207,7 @@ export const fr: UI = {
 	voice: {
 		eyebrow: 'Commandes vocales',
 		title: 'Interrogez et validez vos prises sans toucher le téléphone',
-		description: 'Compatible avec Siri, Google Assistant et Alexa. Les données sont lues sur votre appareil.',
+		description: 'Compatible avec Siri et Google Assistant. Les données sont lues sur votre appareil.',
 		hint: 'Ouvrez Pills au moins une fois, avec médicaments et prises du jour sur le profil actif.',
 		assistants: [
 			{
@@ -239,24 +239,7 @@ export const fr: UI = {
 					'« Marquer une prise dans Pills »',
 					'« Omettre une prise dans Pills »',
 				],
-			},
-			{
-				id: 'alexa',
-				name: 'Alexa',
-				platform: 'Echo / Amazon',
-				steps: [
-					'App Alexa → Skills → cherchez « Pills » → Activer.',
-					'Echo en espagnol (Espagne) pour les phrases es-ES.',
-					'Dites « Alexa, ouvre Pills » ou une phrase ci-dessous.',
-				],
-				phrases: [
-					'« Alexa, dis à Pills quels médicaments je dois prendre »',
-					'« Alexa, dis à Pills que j’ai pris mon médicament »',
-					'« Alexa, dis à Pills d’omettre la prise »',
-				],
-				limitNote:
-					'Alexa ne lit pas vos médicaments locaux. Pour lister ou marquer des prises, utilisez Siri, Google ou ouvrez Pills sur le téléphone.',
-			},
+			}
 		],
 	},
 	platforms: {
@@ -330,7 +313,7 @@ export const fr: UI = {
 			{
 				question: 'Dois-je créer un compte ?',
 				answer:
-					"Non. Pills est conçue pour fonctionner sans compte cloud obligatoire. Vos données restent sur l'appareil.",
+					"Pills est conçue pour fonctionner sans compte cloud. Vos données restent sur l'appareil.",
 			},
 			{
 				question: 'Pills remplace-t-elle mon médecin ?',

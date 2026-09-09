@@ -33,7 +33,7 @@ export const it: UI = {
 	stats: {
 		items: [
 			{ value: 'TV', label: 'Notifiche e Pills TV' },
-			{ value: '6', label: 'Lingue interfaccia' },
+			{ value: '7', label: 'Lingue interfaccia' },
 			{ value: '6+', label: 'Costanti aggiungibili' },
 			{ value: 'AES-256', label: 'Backup crittografati' },
 		],
@@ -97,7 +97,7 @@ export const it: UI = {
 				icon: 'mic',
 				title: 'Comandi vocali',
 				description:
-					'Chiedi quali farmaci assumere o segna un\'assunzione con Siri, Google Assistant o Alexa.',
+					'Chiedi quali farmaci assumere o segna un\'assunzione con Siri o Google Assistant.',
 			},
 			{
 				icon: 'users',
@@ -207,7 +207,7 @@ export const it: UI = {
 	voice: {
 		eyebrow: 'Comandi vocali',
 		title: 'Chiedi e segna le assunzioni senza toccare il telefono',
-		description: 'Compatibile con Siri, Google Assistant e Alexa. I dati si leggono sul dispositivo.',
+		description: 'Compatibile con Siri e Google Assistant. I dati si leggono sul dispositivo.',
 		hint: 'Apri Pills almeno una volta, con farmaci e assunzioni di oggi sul profilo attivo.',
 		assistants: [
 			{
@@ -239,24 +239,7 @@ export const it: UI = {
 					'«Segna assunzione in Pills»',
 					'«Salta assunzione in Pills»',
 				],
-			},
-			{
-				id: 'alexa',
-				name: 'Alexa',
-				platform: 'Echo / Amazon',
-				steps: [
-					'App Alexa → Skill → cerca «Pills» → Attiva.',
-					'Echo in spagnolo (Spagna) per frasi es-ES.',
-					'Dì «Alexa, apri Pills» o una frase sotto.',
-				],
-				phrases: [
-					'«Alexa, chiedi a Pills quali farmaci devo prendere»',
-					'«Alexa, dì a Pills che ho preso la pillola»',
-					'«Alexa, dì a Pills di saltare l\'assunzione»',
-				],
-				limitNote:
-					'Alexa non legge i farmaci locali. Per elencare o segnare assunzioni usa Siri, Google o apri Pills sul telefono.',
-			},
+			}
 		],
 	},
 	platforms: {
@@ -330,7 +313,7 @@ export const it: UI = {
 			{
 				question: 'Devo creare un account?',
 				answer:
-					'No. Pills è pensata per funzionare senza un account cloud obbligatorio. I dati restano sul dispositivo.',
+					'Pills è pensata per funzionare senza un account cloud. I dati restano sul dispositivo.',
 			},
 			{
 				question: 'Pills sostituisce il mio medico?',

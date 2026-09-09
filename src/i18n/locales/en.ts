@@ -33,7 +33,7 @@ export const en: UI = {
 	stats: {
 		items: [
 			{ value: 'TV', label: 'Alerts & Pills TV' },
-			{ value: '6', label: 'Interface languages' },
+			{ value: '7', label: 'Interface languages' },
 			{ value: '6+', label: 'Addable vitals' },
 			{ value: 'AES-256', label: 'Encrypted backups' },
 		],
@@ -97,7 +97,7 @@ export const en: UI = {
 				icon: 'mic',
 				title: 'Voice commands',
 				description:
-					'Ask which pills are due or mark a dose with Siri, Google Assistant or Alexa.',
+					'Ask which pills are due or mark a dose with Siri or Google Assistant.',
 			},
 			{
 				icon: 'users',
@@ -207,7 +207,7 @@ export const en: UI = {
 	voice: {
 		eyebrow: 'Voice commands',
 		title: 'Ask and mark doses without touching your phone',
-		description: 'Works with Siri, Google Assistant and Alexa. Data is read on your device.',
+		description: 'Works with Siri and Google Assistant. Data is read on your device.',
 		hint: 'Open Pills at least once, with medication and today’s doses on the active profile.',
 		assistants: [
 			{
@@ -239,24 +239,7 @@ export const en: UI = {
 					'"Mark dose in Pills"',
 					'"Skip dose in Pills"',
 				],
-			},
-			{
-				id: 'alexa',
-				name: 'Alexa',
-				platform: 'Echo / Amazon',
-				steps: [
-					'Alexa app → Skills → search “Pills” → Enable.',
-					'Echo language: Spanish (Spain) for es-ES phrases.',
-					'Say “Alexa, open Pills” or a phrase below.',
-				],
-				phrases: [
-					'"Alexa, tell Pills what pills I need"',
-					'"Alexa, tell Pills I took my pill"',
-					'"Alexa, tell Pills to skip the dose"',
-				],
-				limitNote:
-					'Alexa cannot read local medication. To list or mark doses, use Siri, Google, or open Pills on your phone.',
-			},
+			}
 		],
 	},
 	platforms: {
@@ -330,7 +313,7 @@ export const en: UI = {
 			{
 				question: 'Do I need to create an account?',
 				answer:
-					'No. Pills is designed to work without a mandatory cloud account. Your data stays on your device.',
+					'Pills is designed to work without a cloud account. Your data is stored on your device.',
 			},
 			{
 				question: 'Does Pills replace my doctor?',
