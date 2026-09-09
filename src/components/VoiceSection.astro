@@ -51,8 +51,6 @@ const assistants = t.voice.assistants;
 							<ul class="phrases">
 								{assistant.phrases.map((phrase) => <li>{phrase}</li>)}
 							</ul>
-
-							{assistant.limitNote && <p class="limit-note">{assistant.limitNote}</p>}
 						</article>
 					))
 				}
@@ -100,7 +98,7 @@ const assistants = t.voice.assistants;
 
 	.tab-nav {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 		background: rgba(0, 0, 0, 0.15);
 		border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 	}
@@ -142,8 +140,7 @@ const assistants = t.voice.assistants;
 	}
 
 	.tabs:has(#voice-tab-siri:checked) [data-assistant='siri'],
-	.tabs:has(#voice-tab-google:checked) [data-assistant='google'],
-	.tabs:has(#voice-tab-alexa:checked) [data-assistant='alexa'] {
+	.tabs:has(#voice-tab-google:checked) [data-assistant='google'] {
 		display: block;
 	}
 
@@ -182,17 +179,6 @@ const assistants = t.voice.assistants;
 		font-size: 14px;
 		font-style: italic;
 		line-height: 1.4;
-	}
-
-	.limit-note {
-		margin: 16px 0 0;
-		padding: 12px 14px;
-		border-radius: var(--radius-sm);
-		background: rgba(212, 83, 74, 0.1);
-		border: 1px solid rgba(212, 83, 74, 0.22);
-		color: rgba(255, 220, 216, 0.9);
-		font-size: 13px;
-		line-height: 1.45;
 	}
 
 	@media (max-width: 560px) {

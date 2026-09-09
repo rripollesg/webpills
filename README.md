@@ -14,6 +14,7 @@ Landing page estática de **Pills** (Astro): medicación, historial clínico, co
 | Deutsch | `/de/` |
 | Italiano | `/it/` |
 | Português | `/pt/` |
+| Українська | `/uk/` |
 
 Traducciones en `src/i18n/locales/`.
 
@@ -55,11 +56,11 @@ Enlaces de App Store y Google Play: `src/config/downloads.ts`.
 
 Basada en la política de privacidad de la app Pills.
 
-## Comandos de voz (Siri, Google Assistant, Alexa)
+## Comandos de voz (Siri, Google Assistant)
 
 Guía corta para usuarios en la landing: **[Comandos de voz](https://pills.serefor.com/#voz)** (`#voz` / `/en/#voz` / …).
 
-Pasos y frases clave por asistente (Siri, Google, Alexa).
+Pasos y frases clave por asistente (Siri, Google).
 
 Documentación técnica completa en el README del proyecto Flutter (`../README.md`, sección «Comandos de voz»).
 

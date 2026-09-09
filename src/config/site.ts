@@ -22,4 +22,5 @@ export const ogLocales: Record<string, string> = {
 	de: 'de_DE',
 	it: 'it_IT',
 	pt: 'pt_BR',
+	uk: 'uk_UA',
 };

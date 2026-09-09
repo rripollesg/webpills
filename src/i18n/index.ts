@@ -7,18 +7,21 @@ import { fr } from './locales/fr';
 import { de } from './locales/de';
 import { it } from './locales/it';
 import { pt } from './locales/pt';
+import { uk } from './locales/uk';
 import { privacyEs } from './privacy/es';
 import { privacyEn } from './privacy/en';
 import { privacyFr } from './privacy/fr';
 import { privacyDe } from './privacy/de';
 import { privacyIt } from './privacy/it';
 import { privacyPt } from './privacy/pt';
+import { privacyUk } from './privacy/uk';
 import { legalEs } from './legal/es';
 import { legalEn } from './legal/en';
 import { legalFr } from './legal/fr';
 import { legalDe } from './legal/de';
 import { legalIt } from './legal/it';
 import { legalPt } from './legal/pt';
+import { legalUk } from './legal/uk';
 
 export type { UI } from './types';
 export type { PrivacyPage } from './privacy-types';
@@ -31,13 +34,14 @@ export const languages = {
 	de: 'Deutsch',
 	it: 'Italiano',
 	pt: 'Português',
+	uk: 'Українська',
 } as const;
 
 export type Lang = keyof typeof languages;
 
 export const defaultLang: Lang = 'es';
 
-export const langCodes: Lang[] = ['es', 'en', 'fr', 'de', 'it', 'pt'];
+export const langCodes: Lang[] = ['es', 'en', 'fr', 'de', 'it', 'pt', 'uk'];
 
 export function isLang(value: string): value is Lang {
 	return value in languages;
@@ -62,6 +66,7 @@ export const ui: Record<Lang, UI> = {
 	de,
 	it,
 	pt,
+	uk,
 };
 
 export function useTranslations(lang: Lang) {
@@ -75,6 +80,7 @@ export const privacyUi: Record<Lang, PrivacyPage> = {
 	de: privacyDe,
 	it: privacyIt,
 	pt: privacyPt,
+	uk: privacyUk,
 };
 
 export function usePrivacy(lang: Lang) {
@@ -88,6 +94,7 @@ export const legalUi: Record<Lang, LegalPage> = {
 	de: legalDe,
 	it: legalIt,
 	pt: legalPt,
+	uk: legalUk,
 };
 
 export function useLegal(lang: Lang) {

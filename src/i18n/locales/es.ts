@@ -33,7 +33,7 @@ export const es: UI = {
 	stats: {
 		items: [
 			{ value: 'TV', label: 'Notificaciones y Pills TV' },
-			{ value: '6', label: 'Idiomas de interfaz' },
+			{ value: '7', label: 'Idiomas de interfaz' },
 			{ value: '6+', label: 'Constantes añadibles' },
 			{ value: 'AES-256', label: 'Backups cifrados' },
 		],
@@ -97,7 +97,7 @@ export const es: UI = {
 				icon: 'mic',
 				title: 'Comandos de voz',
 				description:
-					'Pregunta qué pastillas te tocan o marca una toma con Siri, Google Assistant o Alexa.',
+					'Pregunta qué pastillas te tocan o marca una toma con Siri o Google Assistant.',
 			},
 			{
 				icon: 'users',
@@ -207,7 +207,7 @@ export const es: UI = {
 	voice: {
 		eyebrow: 'Comandos de voz',
 		title: 'Pregunta y marca tus tomas sin tocar el móvil',
-		description: 'Compatible con Siri, Google Assistant y Alexa. Los datos se leen en tu dispositivo.',
+		description: 'Compatible con Siri y Google Assistant. Los datos se leen en tu dispositivo.',
 		hint: 'Abre Pills al menos una vez, con medicación y tomas de hoy en el perfil activo.',
 		assistants: [
 			{
@@ -239,24 +239,7 @@ export const es: UI = {
 					'«Marcar toma en Pills»',
 					'«Omitir toma en Pills»',
 				],
-			},
-			{
-				id: 'alexa',
-				name: 'Alexa',
-				platform: 'Echo / Amazon',
-				steps: [
-					'App Alexa → Skills → busca «Pills» → Activar.',
-					'Echo en español (España).',
-					'Di «Alexa, abre Pills» o una frase de abajo.',
-				],
-				phrases: [
-					'«Alexa, dile a Pills qué pastillas me tocan»',
-					'«Alexa, dile a Pills que ya me tomé la pastilla»',
-					'«Alexa, dile a Pills que omita la toma»',
-				],
-				limitNote:
-					'Alexa no lee tu medicación local. Para listar o marcar tomas usa Siri, Google o abre Pills en el móvil.',
-			},
+			}
 		],
 	},
 	platforms: {
@@ -330,7 +313,7 @@ export const es: UI = {
 			{
 				question: '¿Necesito crear una cuenta?',
 				answer:
-					'No. Pills está pensada para funcionar sin una cuenta en la nube obligatoria. Tus datos se guardan en el dispositivo.',
+					'Pills está pensada para funcionar sin una cuenta en la nube. Tus datos se guardan en el dispositivo.',
 			},
 			{
 				question: '¿Pills sustituye a mi médico?',

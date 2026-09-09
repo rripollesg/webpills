@@ -33,7 +33,7 @@ export const pt: UI = {
 	stats: {
 		items: [
 			{ value: 'TV', label: 'Notificações e Pills TV' },
-			{ value: '6', label: 'Idiomas da interface' },
+			{ value: '7', label: 'Idiomas da interface' },
 			{ value: '6+', label: 'Constantes adicionáveis' },
 			{ value: 'AES-256', label: 'Backups criptografados' },
 		],
@@ -97,7 +97,7 @@ export const pt: UI = {
 				icon: 'mic',
 				title: 'Comandos de voz',
 				description:
-					'Pergunte quais remédios tomar ou marque uma dose com Siri, Google Assistant ou Alexa.',
+					'Pergunte quais remédios tomar ou marque uma dose com Siri ou Google Assistant.',
 			},
 			{
 				icon: 'users',
@@ -207,7 +207,7 @@ export const pt: UI = {
 	voice: {
 		eyebrow: 'Comandos de voz',
 		title: 'Pergunte e marque doses sem tocar no celular',
-		description: 'Compatível com Siri, Google Assistant e Alexa. Os dados são lidos no dispositivo.',
+		description: 'Compatível com Siri e Google Assistant. Os dados são lidos no dispositivo.',
 		hint: 'Abra o Pills pelo menos uma vez, com medicamentos e doses de hoje no perfil ativo.',
 		assistants: [
 			{
@@ -239,24 +239,7 @@ export const pt: UI = {
 					'«Marcar dose no Pills»',
 					'«Pular dose no Pills»',
 				],
-			},
-			{
-				id: 'alexa',
-				name: 'Alexa',
-				platform: 'Echo / Amazon',
-				steps: [
-					'App Alexa → Skills → busque «Pills» → Ativar.',
-					'Echo em espanhol (Espanha) para frases es-ES.',
-					'Diga «Alexa, abra Pills» ou uma frase abaixo.',
-				],
-				phrases: [
-					'«Alexa, diga ao Pills quais remédios devo tomar»',
-					'«Alexa, diga ao Pills que tomei o remédio»',
-					'«Alexa, diga ao Pills para pular a dose»',
-				],
-				limitNote:
-					'A Alexa não lê medicamentos locais. Para listar ou marcar doses, use Siri, Google ou abra o Pills no celular.',
-			},
+			}
 		],
 	},
 	platforms: {
@@ -330,7 +313,7 @@ export const pt: UI = {
 			{
 				question: 'Preciso criar uma conta?',
 				answer:
-					'Não. O Pills foi pensado para funcionar sem conta na nuvem obrigatória. Seus dados ficam no dispositivo.',
+					'O Pills foi pensado para funcionar sem conta na nuvem. Seus dados ficam no dispositivo.',
 			},
 			{
 				question: 'O Pills substitui meu médico?',

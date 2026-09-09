@@ -77,12 +77,11 @@ export type UI = {
 		description: string;
 		hint: string;
 		assistants: {
-			id: 'siri' | 'google' | 'alexa';
+			id: 'siri' | 'google';
 			name: string;
 			platform: string;
 			steps: string[];
 			phrases: string[];
-			limitNote?: string;
 		}[];
 	};
 	platforms: {
