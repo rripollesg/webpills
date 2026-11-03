@@ -4,10 +4,13 @@ export const storeUrls = {
 	googlePlay: '',
 } as const;
 
-/** Rutas públicas de los APK (colócalos en public/downloads/…). */
+/**
+ * APK directos (GitHub Releases).
+ * No van en Vercel: el límite de archivo es 100 MB y pills.apk supera ese tamaño.
+ */
 export const apkDownloads = {
-	pills: '/downloads/pills/pills.apk',
-	pillsTv: '/downloads/pills-tv/pills-tv.apk',
+	pills: 'https://github.com/rripollesg/webpills/releases/download/apk-v2.0.0/pills.apk',
+	pillsTv: 'https://github.com/rripollesg/webpills/releases/download/apk-v2.0.0/pills-tv.apk',
 } as const;
 
 export function storeHref(url: string, fallback = '#descargar'): string {
@@ -16,4 +19,8 @@ export function storeHref(url: string, fallback = '#descargar'): string {
 
 export function isStorePending(url: string): boolean {
 	return !url.trim();
+}
+
+export function isExternalUrl(url: string): boolean {
+	return /^https?:\/\//i.test(url);
 }

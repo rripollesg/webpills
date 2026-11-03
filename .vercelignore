@@ -1,0 +1,3 @@
+# APKs >100MB: hosted on GitHub Releases (see src/config/downloads.ts)
+public/downloads/**/*.apk
+*.apk

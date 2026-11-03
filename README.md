@@ -34,14 +34,12 @@ npm run preview
 
 ## Descargas APK
 
-Coloca los APK en:
+Los APK de instalación directa están en **GitHub Releases** (`apk-v2.0.0`), no en Vercel (límite 100 MB por archivo):
 
-```
-public/downloads/pills/pills.apk
-public/downloads/pills-tv/pills-tv.apk
-```
+- [pills.apk](https://github.com/rripollesg/webpills/releases/download/apk-v2.0.0/pills.apk)
+- [pills-tv.apk](https://github.com/rripollesg/webpills/releases/download/apk-v2.0.0/pills-tv.apk)
 
-Enlaces de App Store y Google Play: `src/config/downloads.ts`.
+URLs configuradas en `src/config/downloads.ts`. También puedes dejar copias locales en `public/downloads/` (Git LFS) para el VPS/rollback.
 
 ## Estructura principal
 
@@ -64,74 +62,43 @@ Pasos y frases clave por asistente (Siri, Google).
 
 Documentación técnica completa en el README del proyecto Flutter (`../README.md`, sección «Comandos de voz»).
 
-## Despliegue en VPS (GitHub Actions)
+## Despliegue en Vercel
 
-Servidor AWS (eu-north-1):
+Producción: **https://pills.serefor.com** (hosting en Vercel; el VPS ya no sirve esta web).
 
-| Campo | Valor |
-|-------|-------|
-| Dominio | **https://pills.serefor.com** |
-| IP | `13.62.220.28` |
-| DNS EC2 | `ec2-13-62-220-28.eu-north-1.compute.amazonaws.com` |
-| Usuario SSH | `ubuntu` |
-| Ruta web | `/var/www/serefor_com_usr/data/www/pills.serefor.com` |
+### 1. Conectar el repo
 
-### DNS (registrador de serefor.com)
+1. En [vercel.com](https://vercel.com) → **Add New Project** → importa `rripollesg/webpills`.
+2. Framework: **Astro** (detectado). Build: `npm run build` · Output: `dist`.
+3. Production branch: `main`.
+Config local: `vercel.json`. Los APK grandes se excluyen del deploy (`.vercelignore`) y se sirven desde GitHub Releases.
 
-| Tipo | Nombre | Valor |
-|------|--------|-------|
-| A | `pills` | `13.62.220.28` |
-| A | `www.pills` | `13.62.220.28` |
+### 2. Dominio `pills.serefor.com`
 
-La web se sirve en: **https://pills.serefor.com/**
+Ya está añadido al proyecto Vercel `webpills`. En **Cloudflare** (DNS de `serefor.com`) cambia el registro de `pills` (ahora apunta al proxy de Cloudflare / VPS) por:
 
-Tras propagar DNS (minutos u horas), en el VPS:
+| Tipo | Nombre | Valor | Proxy |
+|------|--------|-------|-------|
+| CNAME | `pills` | `e99dc7f423ea05f6.vercel-dns-017.com` | **DNS only** (gris, sin proxy) |
+| CNAME | `www.pills` | `e99dc7f423ea05f6.vercel-dns-017.com` | **DNS only** (gris) |
 
-```bash
-sudo CERTBOT_EMAIL=tu@email.com bash deploy/enable-ssl.sh
-```
+Atajo Domain Connect de Vercel: panel del dominio en el proyecto → Apply with Cloudflare.
 
-Workflows en `.github/workflows/`:
-
-| Workflow | Cuándo se ejecuta |
-|----------|-------------------|
-| `ci.yml` | Push y PR a `main` / `v1` — compila el sitio |
-| `deploy-vps.yml` | Push a `main` / `v1` o manual — build + rsync al VPS |
-
-### Variables del repositorio (ya configuradas)
-
-| Variable | Valor |
-|----------|-------|
-| `VPS_HOST` | `13.62.220.28` |
-| `VPS_USER` | `ubuntu` |
-| `VPS_DEPLOY_PATH` | `/var/www/serefor_com_usr/data/www/pills.serefor.com` |
-
-### Secret pendiente (solo tú)
-
-| Secret | Descripción |
-|--------|-------------|
-| `VPS_SSH_KEY` | Clave privada SSH para el deploy |
-
-Generar clave y configurar:
+Tras propagar DNS, el SSL lo gestiona Vercel automáticamente. Verifica con:
 
 ```bash
-bash deploy/generate-deploy-key.sh
-# Sigue las instrucciones que imprime (añadir clave al VPS + secret en GitHub)
+vercel domains verify pills.serefor.com --scope rauls-projects-ec441989
 ```
 
-O manualmente:
+### 3. CI
 
-```bash
-gh secret set VPS_SSH_KEY -R rripollesg/webpills < ruta/a/clave_privada
-```
+| Workflow | Cuándo |
+|----------|--------|
+| `ci.yml` | Push / PR a `main` / `v1` — comprueba el build |
+| `deploy-vps.yml` | Solo **manual** (rollback al VPS si hiciera falta) |
 
-### Preparar el VPS (una vez)
+El deploy a producción lo hace Vercel en cada push a `main`.
 
-Conecta con tu clave habitual:
+### Rollback al VPS (opcional)
 
-```bash
-ssh ubuntu@13.62.220.28
-bash deploy/setup-vps.sh
-```
-
-Instala nginx, crea la carpeta de despliegue y deja el sitio accesible en `pills.serefor.com`.
+El workflow `deploy-vps.yml` sigue disponible por `workflow_dispatch`. Variables/secrets antiguos (`VPS_HOST`, `VPS_USER`, `VPS_DEPLOY_PATH`, `VPS_SSH_KEY`) solo hacen falta si lo usas.

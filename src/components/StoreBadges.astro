@@ -1,6 +1,6 @@
 ---
 import type { UI } from '../i18n';
-import { apkDownloads, isStorePending, storeHref, storeUrls } from '../config/downloads';
+import { apkDownloads, isExternalUrl, isStorePending, storeHref, storeUrls } from '../config/downloads';
 
 interface Props {
 	t: UI;
@@ -64,7 +64,9 @@ const googlePlayPending = isStorePending(storeUrls.googlePlay);
 		<a
 			href={apkDownloads.pills}
 			class="store-badge store-badge-apk"
-			download
+			{...(isExternalUrl(apkDownloads.pills)
+				? { target: '_blank', rel: 'noopener noreferrer' }
+				: { download: true })}
 			aria-label={`${t.cta.apkDirect} Pills`}
 		>
 			<span class="store-icon-wrap apk" aria-hidden="true">
@@ -86,7 +88,9 @@ const googlePlayPending = isStorePending(storeUrls.googlePlay);
 		<a
 			href={apkDownloads.pillsTv}
 			class="store-badge store-badge-tv"
-			download
+			{...(isExternalUrl(apkDownloads.pillsTv)
+				? { target: '_blank', rel: 'noopener noreferrer' }
+				: { download: true })}
 			aria-label={`${t.cta.apkDirect} ${t.cta.pillsTv}`}
 		>
 			<span class="store-icon-wrap tv" aria-hidden="true">
